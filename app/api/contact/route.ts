@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
 
-// Initialize Resend with API key from environment variable
+// Initialize Resend lazily to avoid build-time errors
 // Get your API key from https://resend.com/api-keys
-const resend = new Resend(process.env.RESEND_API_KEY)
+const getResend = () => {
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
+    throw new Error("RESEND_API_KEY is not set")
+  }
+  return new Resend(apiKey)
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -42,10 +48,11 @@ export async function POST(request: NextRequest) {
     // Send email using Resend
     // Update the "from" email to match your verified domain in Resend
     // Update the "to" email to your actual business email
+    const resend = getResend()
     const { data, error } = await resend.emails.send({
       from: "Axle Africa Partners <onboarding@resend.dev>", // Replace with your verified domain
       to: process.env.CONTACT_EMAIL || "info@axleafricapartners.com", // Replace with your email
-      replyTo: email,
+      reply_to: email,
       subject: emailSubject,
       html: emailHtml,
     })
