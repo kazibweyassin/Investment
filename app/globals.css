@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* JPMorgan Chase-inspired premium typography */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+    letter-spacing: -0.02em;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+    letter-spacing: -0.01em;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+}
+
+/* Premium section spacing - Consistent across all pages */
+.section-padding {
+  @apply py-24 md:py-32 lg:py-40;
+}
+
+.section-padding-sm {
+  @apply py-16 md:py-20 lg:py-24;
+}
+
+/* Solid overlay for premium feel */
+.premium-gradient {
+  background: rgba(15, 23, 42, 0.95);
+}
+
+/* Refined card hover effects - Senior-level polish */
+.card-hover {
+  @apply transition-all duration-300 ease-out;
+  @apply hover:shadow-xl hover:-translate-y-1 hover:shadow-primary/5;
+}
+
+/* Consistent container patterns */
+.container-full {
+  @apply w-full px-4 md:px-6 lg:px-8 xl:px-12;
+}
+
+.container-content {
+  @apply w-full max-w-7xl mx-auto;
+}
+
+/* Professional text styling */
+.text-gradient {
+  @apply text-secondary;
+}
+
+/* Smooth focus states for accessibility */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-white;
+}
+
+/* Enhanced animation presets */
+.fade-in-up {
+  @apply opacity-0 translate-y-4;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Professional section dividers */
+.section-divider {
+  @apply border-t border-gray-200/50;
+}
+
+/* Consistent spacing scale */
+.space-section {
+  @apply space-y-12 md:space-y-16 lg:space-y-20;
+}
+
+/* Enhanced image overlays */
+.image-overlay {
+  @apply absolute inset-0 bg-black/40;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 45.5 96.5% 50.2%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 45.5 96.5% 50.2%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 45.5 96.5% 50.2%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
