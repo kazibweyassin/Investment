@@ -1,6 +1,6 @@
 // Content constants - Easy to update content here
 
-export const COMPANY_NAME = "Axle Africa Partners LLC"
+export const COMPANY_NAME = "Uganda Investment Bridge"
 export const COMPANY_EMAIL = "info@axleafricapartners.com"
 export const COMPANY_PHONE = "+256 XXX XXX XXX"
 export const COMPANY_LOCATION = "Kampala, Uganda"
@@ -29,7 +29,7 @@ export const STATS = [
 
 export const TESTIMONIALS = [
   {
-    quote: "Axle Africa Partners navigated us through Uganda's complex regulatory landscape with exceptional expertise. Their due diligence saved us from a potentially costly mistake.",
+    quote: "Uganda Investment Bridge navigated us through Uganda's complex regulatory landscape with exceptional expertise. Their due diligence saved us from a potentially costly mistake.",
     author: "Michael Chen",
     role: "Investment Director",
     company: "Global Commodities Group",
@@ -41,7 +41,7 @@ export const TESTIMONIALS = [
     company: "East African Ventures Ltd",
   },
   {
-    quote: "Working with Axle Africa Partners was the best decision we made. Their local knowledge combined with international standards is unmatched.",
+    quote: "Working with Uganda Investment Bridge was the best decision we made. Their local knowledge combined with international standards is unmatched.",
     author: "David Kimani",
     role: "Managing Partner",
     company: "Pan-African Investment Fund",

@@ -7,18 +7,18 @@ import Footer from "@/components/footer"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Axle Africa Partners LLC | Uganda Investment Facilitation",
+  title: "Uganda Investment Bridge | Expert Investment Facilitation",
   description: "Expert compliance facilitation for gold sector transactions and government tenders in Uganda. Navigate Uganda's investment landscape with confidence.",
   keywords: "Uganda investment, gold sector compliance, government tenders, DGSM license, PPDA, foreign investment Uganda",
   openGraph: {
-    title: "Axle Africa Partners LLC | Uganda Investment Facilitation",
+    title: "Uganda Investment Bridge | Expert Investment Facilitation",
     description: "Expert compliance facilitation for gold sector transactions and government tenders in Uganda.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Axle Africa Partners LLC | Uganda Investment Facilitation",
+    title: "Uganda Investment Bridge | Expert Investment Facilitation",
     description: "Expert compliance facilitation for gold sector transactions and government tenders in Uganda.",
   },
   icons: {

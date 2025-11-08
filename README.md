@@ -1,6 +1,6 @@
-# Axle Africa Partners LLC - Website
+# Uganda Investment Bridge - Website
 
-A professional, modern website for Axle Africa Partners LLC, a Ugandan investment facilitation firm specializing in gold sector compliance and government tender navigation for foreign investors.
+A professional, modern website for Uganda Investment Bridge, a Ugandan investment facilitation firm specializing in gold sector compliance and government tender navigation for foreign investors.
 
 ## Tech Stack
 
@@ -125,5 +125,5 @@ npm start
 
 ## License
 
-© 2025 Axle Africa Partners LLC. All rights reserved.
+© 2025 Uganda Investment Bridge. All rights reserved.
 

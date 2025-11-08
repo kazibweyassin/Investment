@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Contact Us | Axle Africa Partners LLC",
-  description: "Get in touch with Axle Africa Partners LLC to discuss your investment facilitation needs in Uganda.",
+  title: "Contact Us | Uganda Investment Bridge",
+  description: "Get in touch with Uganda Investment Bridge to discuss your investment facilitation needs in Uganda.",
   openGraph: {
-    title: "Contact Us | Axle Africa Partners LLC",
+    title: "Contact Us | Uganda Investment Bridge",
     description: "Get in touch to discuss your investment facilitation needs in Uganda.",
     type: "website",
   },

@@ -102,7 +102,7 @@ export default function Navbar() {
               aria-label="Navigate to home"
             >
               <span className="text-xl font-bold text-secondary">
-                Axle Africa Partners
+                Uganda Investment Bridge
               </span>
             </Link>
 

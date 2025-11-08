@@ -36,13 +36,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
-            <Link
-              href="/"
-              className="inline-block mb-4 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary rounded-md"
-            >
-              <h3 className="text-xl font-bold hover:text-primary transition-colors">
-                Axle Africa Partners LLC
-              </h3>
+                        <Link href="/" className="flex items-center space-x-2 mb-6">
+              <span className="text-2xl font-bold text-white">
+                Uganda Investment Bridge
+              </span>
             </Link>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
               Expert compliance facilitation for gold sector transactions and government tenders in Uganda.
@@ -125,10 +122,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
-          <p className="mb-2">&copy; {currentYear} Axle Africa Partners LLC. All rights reserved.</p>
-          <p className="text-gray-500">Licensed & Registered in Uganda</p>
-          <p className="text-gray-500 mt-2">Axle Africa Partners LLC is an Equal Opportunity Employer</p>
+                <div className="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
+          <p className="mb-2">&copy; {currentYear} Uganda Investment Bridge. All rights reserved.</p>
+          <p className="text-gray-500 text-xs">Uganda • East Africa</p>
+          <p className="text-gray-500 mt-2">Uganda Investment Bridge is an Equal Opportunity Employer</p>
         </div>
       </div>
     </footer>

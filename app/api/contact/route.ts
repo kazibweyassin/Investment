@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
     // Update the "to" email to your actual business email
     const resend = getResend()
     const { data, error } = await resend.emails.send({
-      from: "Axle Africa Partners <onboarding@resend.dev>", // Replace with your verified domain
+      from: "Uganda Investment Bridge <onboarding@resend.dev>", // Replace with your verified domain
       to: process.env.CONTACT_EMAIL || "info@axleafricapartners.com", // Replace with your email
       reply_to: email,
       subject: emailSubject,

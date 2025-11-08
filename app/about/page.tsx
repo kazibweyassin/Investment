@@ -200,7 +200,7 @@ export default function AboutPage() {
 
             <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
               <p>
-                Founded in 2025, <span className="font-semibold text-gray-900">Axle Africa Partners LLC</span> was established to address 
+                Founded in 2025, <span className="font-semibold text-gray-900">Uganda Investment Bridge</span> was established to address 
                 the critical gap between promising investment opportunities in Uganda and the regulatory 
                 complexity faced by foreign investors.
               </p>
