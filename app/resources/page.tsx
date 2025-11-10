@@ -167,28 +167,28 @@ export default function ResourcesPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
               {[
                 {
-                  title: "$500K Gold Verification Completed",
-                  date: "November 8, 2025",
-                  category: "Deal Success",
-                  description: "Dubai-based investor successfully verified DGSM-licensed supplier for pilot gold transaction. Full compliance achieved in 2 weeks.",
-                  icon: "💰",
+                  title: "Uganda Investment Bridge Officially Launched",
+                  date: "November 2025",
+                  category: "Company News",
+                  description: "Launched to bridge international investors with Uganda's verified opportunities in gold, coffee, land, and government contracts.",
+                  icon: "�",
+                  color: "blue"
+                },
+                {
+                  title: "8+ Verified Opportunities Now Available",
+                  date: "November 2025",
+                  category: "Opportunity Update",
+                  description: "Curated portfolio includes DGSM-licensed gold suppliers, UCDA-certified coffee exporters, verified land plots, and active government tenders.",
+                  icon: "✨",
                   color: "amber"
                 },
                 {
-                  title: "Coffee Export Partnership Facilitated",
-                  date: "November 5, 2025",
-                  category: "New Deal",
-                  description: "Connected European specialty roaster with Mount Elgon Arabica cooperative. 10-ton initial contract signed with long-term supply agreement.",
-                  icon: "☕",
-                  color: "brown"
-                },
-                {
-                  title: "PPDA Tender Registration Success",
-                  date: "November 1, 2025",
+                  title: "Partnership Network Established",
+                  date: "November 2025",
                   category: "Milestone",
-                  description: "Regional contractor now PPDA-registered and tracking 3 active tender opportunities in infrastructure sector.",
-                  icon: "📋",
-                  color: "blue"
+                  description: "Built network of licensed partners including DGSM gold dealers, UCDA coffee cooperatives, and PPDA-registered contractors.",
+                  icon: "🤝",
+                  color: "brown"
                 }
               ].map((update, index) => (
                 <motion.div
@@ -238,29 +238,29 @@ export default function ResourcesPage() {
                   <TrendingUp className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Market Update: Uganda Investment Climate</h3>
-                  <p className="text-sm text-gray-500">Last updated: November 10, 2025</p>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Uganda Investment Climate Overview</h3>
+                  <p className="text-sm text-gray-500">Updated: November 2025</p>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
                     <ArrowRight className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <p className="text-gray-700"><strong>Gold Prices:</strong> Stable at $2,050/oz - Strong export demand continues</p>
+                    <p className="text-gray-700"><strong>Gold Sector:</strong> Uganda ranks among Africa's top gold producers - Export-ready suppliers available</p>
                   </div>
                   <div className="flex items-start gap-3">
                     <ArrowRight className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <p className="text-gray-700"><strong>Coffee Sector:</strong> Arabica premiums up 15% YoY - Record harvest expected</p>
+                    <p className="text-gray-700"><strong>Coffee Exports:</strong> Africa's 2nd largest exporter - Both Arabica & Robusta varieties available</p>
                   </div>
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
                     <ArrowRight className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <p className="text-gray-700"><strong>Government Tenders:</strong> $2B+ infrastructure pipeline announced</p>
+                    <p className="text-gray-700"><strong>Government Tenders:</strong> Active PPDA opportunities in health, infrastructure, and ICT sectors</p>
                   </div>
                   <div className="flex items-start gap-3">
                     <ArrowRight className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <p className="text-gray-700"><strong>Investment Climate:</strong> UIA reports 23% increase in foreign investment approvals</p>
+                    <p className="text-gray-700"><strong>Investment Code 1991:</strong> Revised framework provides clear guidelines for foreign investors</p>
                   </div>
                 </div>
               </div>
