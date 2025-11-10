@@ -370,13 +370,13 @@ export default function AboutPage() {
               className="relative h-64 rounded-2xl overflow-hidden group"
             >
               <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800"
+                src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1613"
                 alt="Modern office workspace"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4">
-                <p className="text-white font-semibold">Professional Workspace</p>
+                <p className="text-white font-semibold">CSR & Sustainability</p>
               </div>
             </motion.div>
 
@@ -388,7 +388,7 @@ export default function AboutPage() {
               className="relative h-64 rounded-2xl overflow-hidden group"
             >
               <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800"
+                src="https://images.unsplash.com/photo-1573167710701-35950a41e251?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1169"
                 alt="Team collaboration"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -406,13 +406,13 @@ export default function AboutPage() {
               className="relative h-64 rounded-2xl overflow-hidden group"
             >
               <img
-                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800"
+                src="https://images.unsplash.com/photo-1751139846255-d0d65f3d192a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687"
                 alt="Client consultation"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4">
-                <p className="text-white font-semibold">Client-Focused Service</p>
+                <p className="text-white font-semibold">Local Expertise-Global Standards</p>
               </div>
             </motion.div>
           </div>

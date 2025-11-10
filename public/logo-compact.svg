@@ -1,0 +1,20 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Modern UIB Monogram for Favicon -->
+  <rect width="80" height="80" rx="12" fill="#1e293b"/>
+  
+  <!-- U -->
+  <path d="M16 24V38C16 42.4183 19.5817 46 24 46C28.4183 46 32 42.4183 32 38V24" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- i -->
+  <circle cx="44" cy="26" r="2.5" fill="white"/>
+  <path d="M44 32V46" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+  
+  <!-- B -->
+  <path d="M54 24H60C62.7614 24 65 26.2386 65 29C65 30.6568 64.1045 32.1046 62.7639 32.8944C64.5175 33.6714 65.7 35.4795 65.7 37.6C65.7 40.5928 63.2928 43 60.3 43H54V24Z" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M54 33.5H60" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+  
+  <!-- Accent Bridge Line -->
+  <path d="M16 56H64" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="16" cy="56" r="2.5" fill="#3b82f6"/>
+  <circle cx="64" cy="56" r="2.5" fill="#f59e0b"/>
+</svg>

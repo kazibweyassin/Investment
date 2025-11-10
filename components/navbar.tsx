@@ -98,10 +98,11 @@ export default function Navbar() {
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center space-x-2 transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md px-2 -ml-2"
+              className="flex items-center space-x-3 transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md px-2 -ml-2"
               aria-label="Navigate to home"
             >
-              <span className="text-xl font-bold text-secondary">
+              <img src="/logo.svg" alt="UIB Logo" className="h-8 w-auto text-slate-900" />
+              <span className="text-lg font-bold text-secondary hidden sm:block">
                 Uganda Investment Bridge
               </span>
             </Link>

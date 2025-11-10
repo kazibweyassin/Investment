@@ -1,5 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="#0F172A"/>
-  <text x="50" y="70" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#F59E0B" text-anchor="middle">AAP</text>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Modern UIB Favicon -->
+  <rect width="64" height="64" rx="12" fill="#1e293b"/>
+  
+  <!-- U -->
+  <path d="M12 18V30C12 33.3137 14.6863 36 18 36C21.3137 36 24 33.3137 24 30V18" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- i -->
+  <circle cx="32" cy="20" r="2" fill="white"/>
+  <path d="M32 25V36" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- B -->
+  <path d="M40 18H45C47.2091 18 49 19.7909 49 22C49 23.3261 48.3279 24.4973 47.3178 25.1803C48.7336 25.8632 49.7 27.2982 49.7 29C49.7 31.4301 47.7301 33.4 45.3 33.4H40V18Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M40 26H45" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Bridge Accent -->
+  <path d="M12 46H52" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="12" cy="46" r="2" fill="#3b82f6"/>
+  <circle cx="52" cy="46" r="2" fill="#f59e0b"/>
 </svg>
 
