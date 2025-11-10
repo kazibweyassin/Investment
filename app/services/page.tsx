@@ -96,7 +96,7 @@ export default function ServicesPage() {
                 icon: <FileText className="h-8 w-8" />,
                 title: "Government Tender Navigation",
                 description: "Expert guidance through PPDA tender processes",
-                color: "purple",
+                color: "indigo",
                 link: "#tenders"
               }
             ].map((service, index) => (
@@ -112,7 +112,7 @@ export default function ServicesPage() {
                   <div className={`w-16 h-16 rounded-xl ${
                     service.color === 'amber' ? 'bg-amber-600' : 
                     service.color === 'brown' ? 'bg-amber-800' : 
-                    'bg-purple-600'
+                    'bg-indigo-600'
                   } flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform`}>
                     {service.icon}
                   </div>
@@ -242,15 +242,15 @@ export default function ServicesPage() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="p-8 bg-white border-2 border-purple-200 rounded-2xl"
+              className="p-8 bg-white border-2 border-indigo-200 rounded-2xl"
             >
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 rounded-xl bg-purple-600 flex items-center justify-center">
+                <div className="w-14 h-14 rounded-xl bg-indigo-600 flex items-center justify-center">
                   <Clock className="h-7 w-7 text-white" />
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-gray-900">Timeline</h4>
-                  <p className="text-2xl font-bold text-purple-600 mt-1">2-6 weeks</p>
+                  <p className="text-2xl font-bold text-indigo-600 mt-1">2-6 weeks</p>
                 </div>
               </div>
               <p className="text-gray-600">Timeline depends on transaction complexity and documentation readiness</p>
@@ -455,7 +455,7 @@ export default function ServicesPage() {
             className="mb-16"
           >
             <div className="flex items-start gap-6 mb-12">
-              <div className="w-20 h-20 rounded-2xl bg-purple-600 flex items-center justify-center shadow-xl">
+              <div className="w-20 h-20 rounded-2xl bg-indigo-600 flex items-center justify-center shadow-xl">
                 <FileText className="h-10 w-10 text-white" />
               </div>
               <div className="flex-1">
@@ -536,15 +536,15 @@ export default function ServicesPage() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="p-8 bg-white border-2 border-purple-200 rounded-2xl"
+              className="p-8 bg-white border-2 border-indigo-200 rounded-2xl"
             >
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 rounded-xl bg-purple-600 flex items-center justify-center">
+                <div className="w-14 h-14 rounded-xl bg-indigo-600 flex items-center justify-center">
                   <DollarSign className="h-7 w-7 text-white" />
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-gray-900">Pricing</h4>
-                  <p className="text-2xl font-bold text-purple-600 mt-1">From $2,500</p>
+                  <p className="text-2xl font-bold text-indigo-600 mt-1">From $2,500</p>
                 </div>
               </div>
               <p className="text-gray-600">Custom pricing based on tender complexity and support level required</p>
@@ -572,7 +572,7 @@ export default function ServicesPage() {
           {/* Deliverables */}
           <div className="mb-16">
             <div className="flex items-center gap-3 mb-6">
-              <FileCheck className="h-7 w-7 text-purple-600" />
+              <FileCheck className="h-7 w-7 text-indigo-600" />
               <h3 className="text-2xl font-bold text-gray-900">What You Receive</h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -589,9 +589,9 @@ export default function ServicesPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
-                  className="flex items-start gap-3 p-5 bg-white border border-gray-200 rounded-xl hover:border-purple-300 hover:shadow-md transition-all"
+                  className="flex items-start gap-3 p-5 bg-white border border-gray-200 rounded-xl hover:border-indigo-300 hover:shadow-md transition-all"
                 >
-                  <CheckCircle2 className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-5 w-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 font-medium">{item}</span>
                 </motion.div>
               ))}

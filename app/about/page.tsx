@@ -15,7 +15,7 @@ export default function AboutPage() {
       icon: <Eye className="h-7 w-7" />,
       title: "Transparent Processes",
       description: "Every step of our process is transparent. We provide regular updates, detailed documentation, and clear communication throughout the engagement.",
-      color: "purple"
+      color: "teal"
     },
     {
       icon: <Scale className="h-7 w-7" />,
@@ -99,7 +99,7 @@ export default function AboutPage() {
       <section className="relative py-20 bg-white overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 right-20 w-96 h-96 bg-blue-300 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-purple-300 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-teal-300 rounded-full blur-3xl"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -185,9 +185,9 @@ export default function AboutPage() {
             className="max-w-4xl mx-auto"
           >
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 rounded-full mb-6">
-                <Heart className="h-4 w-4 text-purple-600" />
-                <span className="text-sm font-semibold text-purple-900">Our Story</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 rounded-full mb-6">
+                <Heart className="h-4 w-4 text-teal-600" />
+                <span className="text-sm font-semibold text-teal-900">Our Story</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Born from Experience, Built on Trust
@@ -239,7 +239,7 @@ export default function AboutPage() {
       <section className="relative py-20 bg-white overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/4 w-72 h-72 bg-gradient-to-br from-blue-100 to-transparent rounded-full blur-3xl opacity-30"></div>
-          <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-gradient-to-br from-purple-100 to-transparent rounded-full blur-3xl opacity-30"></div>
+          <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-gradient-to-br from-teal-100 to-transparent rounded-full blur-3xl opacity-30"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -272,7 +272,7 @@ export default function AboutPage() {
               >
                 <div className={`w-16 h-16 rounded-xl ${
                   approach.color === 'blue' ? 'bg-blue-600' :
-                  approach.color === 'purple' ? 'bg-purple-600' :
+                  approach.color === 'teal' ? 'bg-teal-600' :
                   approach.color === 'green' ? 'bg-green-600' :
                   'bg-orange-600'
                 } flex items-center justify-center text-white mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
@@ -340,9 +340,9 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="relative group"
             >
-              <div className="absolute inset-0 bg-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative p-8 bg-white border-2 border-purple-200 rounded-2xl">
-                <div className="w-14 h-14 rounded-xl bg-purple-600 flex items-center justify-center mb-6">
+              <div className="absolute inset-0 bg-teal-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative p-8 bg-white border-2 border-teal-200 rounded-2xl">
+                <div className="w-14 h-14 rounded-xl bg-teal-600 flex items-center justify-center mb-6">
                   <Globe className="h-7 w-7 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">International Standards</h3>
@@ -350,8 +350,8 @@ export default function AboutPage() {
                   Our international team members bring experience from major financial centers and 
                   multinational corporations, applying global best practices.
                 </p>
-                <div className="pt-4 border-t border-purple-200">
-                  <div className="flex items-center gap-2 text-purple-700 font-medium">
+                <div className="pt-4 border-t border-teal-200">
+                  <div className="flex items-center gap-2 text-teal-700 font-medium">
                     <CheckCircle2 className="h-4 w-4" />
                     <span>World-class compliance standards</span>
                   </div>
@@ -485,7 +485,7 @@ export default function AboutPage() {
                 title: "Technical Advisors",
                 description: "Network of former government officials and industry experts providing technical guidance.",
                 status: "Active advisory network",
-                color: "purple"
+                color: "teal"
               }
             ].map((partner, index) => (
               <motion.div
@@ -499,7 +499,7 @@ export default function AboutPage() {
                 <div className={`w-12 h-12 rounded-lg ${
                   partner.color === 'blue' ? 'bg-blue-600' :
                   partner.color === 'green' ? 'bg-green-600' :
-                  'bg-purple-600'
+                  'bg-teal-600'
                 } flex items-center justify-center text-white mb-4`}>
                   {partner.icon}
                 </div>
@@ -566,22 +566,22 @@ export default function AboutPage() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-purple-50 to-purple-100 border-2 border-purple-300 rounded-2xl p-8"
+              className="bg-gradient-to-br from-teal-50 to-teal-100 border-2 border-teal-300 rounded-2xl p-8"
             >
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-16 h-16 rounded-xl bg-purple-600 flex items-center justify-center flex-shrink-0">
+                <div className="w-16 h-16 rounded-xl bg-teal-600 flex items-center justify-center flex-shrink-0">
                   <Scale className="h-8 w-8 text-white" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">Investment Code 1991</h3>
-                  <p className="text-purple-900 font-medium">Revised 2019 - Full Compliance</p>
+                  <p className="text-teal-900 font-medium">Revised 2019 - Full Compliance</p>
                 </div>
               </div>
               <p className="text-gray-700 leading-relaxed mb-4">
                 Operating in full compliance with Uganda's Investment Code Act, ensuring all facilitated 
                 investments meet legal requirements and regulatory standards.
               </p>
-              <div className="flex items-center gap-2 text-purple-700 font-semibold">
+              <div className="flex items-center gap-2 text-teal-700 font-semibold">
                 <CheckCircle2 className="h-5 w-5" />
                 <span>Legal Framework Adherence</span>
               </div>

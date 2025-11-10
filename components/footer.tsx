@@ -16,6 +16,7 @@ export default function Footer() {
       { href: "/services", label: "Services" },
       { href: "/resources", label: "Resources" },
       { href: "/contact", label: "Contact" },
+      { href: "/sitemap", label: "Sitemap" },
     ],
     legal: [
       { href: "#", label: "Privacy Policy" },

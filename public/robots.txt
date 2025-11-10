@@ -1,0 +1,24 @@
+# Uganda Investment Bridge - Robots.txt
+# Last updated: November 10, 2025
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://ugandainvestmentbridge.com/sitemap.xml
+
+# Crawl delay (optional, adjust as needed)
+Crawl-delay: 1
+
+# Disallow admin/private sections (if any in the future)
+# Disallow: /admin/
+# Disallow: /api/
+
+# Allow all main pages and resources
+Allow: /about
+Allow: /services
+Allow: /why-uganda
+Allow: /resources
+Allow: /contact
+Allow: /sitemap
+Allow: /resources/articles/

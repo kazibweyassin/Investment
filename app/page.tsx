@@ -286,50 +286,27 @@ export default function HomePage() {
             </div>
             
             <div className="p-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <div>
-                  <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-600" />
-                    Subscription Access
-                  </h4>
-                  <div className="space-y-3 text-gray-700">
-                    <div className="flex items-start gap-2">
-                      <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                      <span><strong>Explorer:</strong> $99/month — Basic opportunities & market reports</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                      <span><strong>Professional:</strong> $299/month — Full access, priority introductions</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                      <span><strong>Enterprise:</strong> Custom pricing — Dedicated support & exclusive deals</span>
-                    </div>
+              <div className="max-w-2xl mx-auto mb-8">
+                <h4 className="text-lg font-bold text-slate-900 mb-6 flex items-center justify-center gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-green-600" />
+                  Investment Minimums
+                </h4>
+                <div className="space-y-3 text-gray-700">
+                  <div className="flex items-start gap-2">
+                    <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span><strong>Gold Sector:</strong> $200K minimum investment</span>
                   </div>
-                </div>
-
-                <div>
-                  <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-600" />
-                    Investment Minimums
-                  </h4>
-                  <div className="space-y-3 text-gray-700">
-                    <div className="flex items-start gap-2">
-                      <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                      <span><strong>Gold Sector:</strong> $200K minimum investment</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                      <span><strong>Coffee Exports:</strong> $150K minimum investment</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                      <span><strong>Government Tenders:</strong> $500K minimum bid value</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                      <span><strong>Land Acquisitions:</strong> $300K minimum purchase</span>
-                    </div>
+                  <div className="flex items-start gap-2">
+                    <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span><strong>Coffee Exports:</strong> $150K minimum investment</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span><strong>Government Tenders:</strong> $500K minimum bid value</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span><strong>Land Acquisitions:</strong> $300K minimum purchase</span>
                   </div>
                 </div>
               </div>
@@ -530,16 +507,16 @@ export default function HomePage() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="group bg-white border-2 border-purple-200 rounded-2xl p-8 hover:border-purple-400 hover:shadow-2xl transition-all"
+              className="group bg-white border-2 border-indigo-200 rounded-2xl p-8 hover:border-indigo-400 hover:shadow-2xl transition-all"
             >
               <div className="flex items-start gap-6 mb-6">
-                <div className="w-16 h-16 rounded-xl bg-purple-600 flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
                   <FileText className="h-8 w-8" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-slate-900 mb-2">Government Tender Navigation</h3>
                   <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
-                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-purple-100 text-purple-700 rounded-full font-semibold">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full font-semibold">
                       <DollarSign className="h-3 w-3" />
                       From $2,500
                     </span>
@@ -563,26 +540,26 @@ export default function HomePage() {
 
               <div className="space-y-3 mb-6">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-5 w-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-gray-700">PPDA portal registration & setup</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-5 w-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-gray-700">Tender identification & pre-qualification</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-5 w-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-gray-700">Bid preparation & compliance checks</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-5 w-5 text-indigo-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-gray-700">Contract management support</span>
                 </div>
               </div>
 
               <Link 
                 href="/services#tenders"
-                className="w-full px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group-hover:gap-3 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                className="w-full px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group-hover:gap-3 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 aria-label="Learn more about government tender navigation"
               >
                 Learn More

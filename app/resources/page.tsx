@@ -11,25 +11,25 @@ export default function ResourcesPage() {
     {
       title: "How to Verify a DGSM Gold Dealer License",
       description: "A comprehensive guide to verifying Directorate of Geological Survey and Mines licenses for gold dealers in Uganda.",
-      href: "#",
+      href: "/resources/articles/verify-dgsm-gold-license",
       image: "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=800"
     },
     {
       title: "PPDA Tender Application: Complete Checklist",
       description: "Everything you need to know before submitting a tender application through Uganda's Public Procurement and Disposal of Public Assets portal.",
-      href: "#",
+      href: "/resources/articles/ppda-tender-checklist",
       image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800"
     },
     {
       title: "Understanding Uganda's Gold Export Requirements",
       description: "Navigate the complex requirements for exporting gold from Uganda, including documentation, permits, and compliance standards.",
-      href: "#",
+      href: "/resources/articles/gold-export-requirements",
       image: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=800"
     },
     {
       title: "Common Reasons Bids Get Disqualified",
       description: "Learn about the most common mistakes that lead to bid disqualification and how to avoid them.",
-      href: "#",
+      href: "/resources/articles/tender-disqualification-reasons",
       image: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800"
     },
   ]

@@ -34,7 +34,7 @@ const reasons = [
     icon: <Globe className="h-8 w-8" />,
     title: "Growing Multinational Presence",
     description: "Increasingly becoming the investment destination of choice for global corporates looking to expand in East Africa.",
-    color: "purple"
+    color: "teal"
   },
   {
     icon: <Factory className="h-8 w-8" />,
@@ -58,7 +58,7 @@ const reasons = [
     icon: <Lightbulb className="h-8 w-8" />,
     title: "Innovation & Technology Hub",
     description: "Fast becoming a technology hub in East Africa with a growing ecosystem supporting digital innovation.",
-    color: "purple"
+    color: "blue"
   },
   {
     icon: <Mountain className="h-8 w-8" />,
@@ -82,7 +82,7 @@ const reasons = [
     icon: <Heart className="h-8 w-8" />,
     title: "Excellent Quality of Life",
     description: "Renowned for natural beauty, stable climate, and welcoming culture with modern amenities in major cities.",
-    color: "purple"
+    color: "blue"
   },
 ]
 
@@ -269,7 +269,7 @@ export default function WhyUgandaPage() {
                   sector.color === 'yellow' ? 'bg-yellow-50 border-yellow-200' :
                   sector.color === 'blue' ? 'bg-blue-50 border-blue-200' :
                   sector.color === 'green' ? 'bg-green-50 border-green-200' :
-                  sector.color === 'purple' ? 'bg-purple-50 border-purple-200' :
+                  sector.color === 'blue' ? 'bg-blue-40 border-blue-100' :
                   'bg-orange-50 border-orange-200'
                 } border-2 rounded-xl hover:shadow-lg transition-all group cursor-pointer`}
               >
@@ -277,7 +277,7 @@ export default function WhyUgandaPage() {
                   sector.color === 'yellow' ? 'bg-yellow-600' :
                   sector.color === 'blue' ? 'bg-blue-600' :
                   sector.color === 'green' ? 'bg-green-600' :
-                  sector.color === 'purple' ? 'bg-purple-600' :
+                  sector.color === 'blue' ? 'bg-blue-400' :
                   'bg-orange-600'
                 } text-white mb-3 group-hover:scale-110 transition-transform`}>
                   {sector.icon}
@@ -338,7 +338,7 @@ export default function WhyUgandaPage() {
                 title: "Plan for Compliance",
                 description: "Build compliance requirements into your timeline and budget from day one to avoid costly delays.",
                 tip: "Upfront consultation identifies all needs early",
-                color: "purple"
+                color: "blue"
               },
               {
                 icon: <Network className="h-7 w-7" />,
@@ -367,7 +367,7 @@ export default function WhyUgandaPage() {
                   practice.color === 'blue' ? 'bg-blue-600' :
                   practice.color === 'green' ? 'bg-green-600' :
                   practice.color === 'orange' ? 'bg-orange-600' :
-                  'bg-purple-600'
+                  'bg-blue-600'
                 } flex items-center justify-center text-white mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
                   {practice.icon}
                 </div>
