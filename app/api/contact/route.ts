@@ -27,8 +27,9 @@ export async function POST(request: NextRequest) {
     // Email service interest labels
     const serviceLabels: Record<string, string> = {
       gold: "Gold Sector Facilitation",
+      coffee: "Coffee Export Facilitation",
       tenders: "Government Tender Navigation",
-      both: "Both Services",
+      both: "Multiple Services",
       general: "General Inquiry",
     }
 

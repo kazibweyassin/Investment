@@ -253,8 +253,15 @@ export default function OpportunitiesPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-slate-900 text-white py-16">
-        <div className="absolute inset-0 opacity-5"></div>
+      <section className="relative bg-slate-900 text-white py-16 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600"
+            alt="Investment opportunities"
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 to-slate-900/90"></div>
+        </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

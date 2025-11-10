@@ -56,8 +56,16 @@ export default function ResourcesPage() {
   return (
     <div className="flex flex-col">
       {/* Page Header */}
-      <section className="section-padding-sm bg-secondary text-white w-full">
-        <div className="container-full">
+      <section className="relative section-padding-sm bg-slate-900 text-white w-full overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1600"
+            alt="Resources and documents"
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 to-slate-900/90"></div>
+        </div>
+        <div className="container-full relative z-10">
           <div className="container-content">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

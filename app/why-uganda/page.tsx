@@ -90,9 +90,15 @@ export default function WhyUgandaPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-secondary text-white py-24">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1539650116574-75c0c6d73bb6?w=1920')] bg-cover bg-center opacity-15"></div>
-        <div className="absolute inset-0 bg-secondary/95"></div>
+      <section className="relative overflow-hidden bg-slate-900 text-white py-20">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=1600"
+            alt="Uganda landscape"
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 to-slate-900/90"></div>
+        </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
