@@ -6,7 +6,7 @@ import {
   Gem, Landmark, FileText, Wheat, Server, 
   CheckCircle2, ArrowRight, Shield, Building2, 
   Globe2, Clock, Award, ChevronRight,
-  MapPin, DollarSign, Star
+  MapPin, DollarSign, Star, Coffee
 } from "lucide-react"
 
 const STATS = [
@@ -23,6 +23,13 @@ const OPPORTUNITY_CATEGORIES = [
     description: "Verified suppliers, export licenses, quality assurance, and logistics coordination",
     stats: "12+ Active Suppliers",
     color: "border-amber-600"
+  },
+  {
+    icon: Coffee,
+    title: "Coffee Exports",
+    description: "Uganda's #1 export - Arabica & Robusta, direct farm partnerships, UCDA certified",
+    stats: "Top 10 Global Exporter",
+    color: "border-amber-800"
   },
   {
     icon: Landmark,
@@ -51,13 +58,6 @@ const OPPORTUNITY_CATEGORIES = [
     description: "Government digitization, telecom projects, and technology partnerships",
     stats: "6 Active Projects",
     color: "border-indigo-600"
-  },
-  {
-    icon: Building2,
-    title: "Business Setup",
-    description: "Company registration, licensing, compliance, and regulatory advisory",
-    stats: "Always Available",
-    color: "border-slate-600"
   }
 ]
 

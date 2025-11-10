@@ -6,7 +6,7 @@ import Link from "next/link"
 import { 
   Gem, Landmark, FileText, Wheat, Server, Building2,
   MapPin, DollarSign, Calendar, TrendingUp, Lock,
-  CheckCircle2, ArrowRight, Filter, Search, Star
+  CheckCircle2, ArrowRight, Filter, Search, Star, Coffee
 } from "lucide-react"
 
 // Mock opportunity data (would come from database)
@@ -26,6 +26,19 @@ const OPPORTUNITIES = [
   },
   {
     id: 2,
+    type: "coffee",
+    title: "Premium Arabica Coffee Export Partnership",
+    location: "Mount Elgon Region, Uganda",
+    sector: "Coffee Exports",
+    investmentSize: "$200K - $800K",
+    stage: "Active",
+    highlights: ["UCDA Certified", "Organic Options", "20+ Year Farmer Network", "Export Ready"],
+    description: "Direct partnership with certified Arabica coffee farmers. Uganda is Africa's 2nd largest coffee exporter. Established supply chain and international buyer network...",
+    isPremium: true,
+    postedDate: "2024-10-30"
+  },
+  {
+    id: 3,
     type: "land",
     title: "50-Acre Commercial Land - Prime Location",
     location: "Entebbe, Uganda",
@@ -38,7 +51,7 @@ const OPPORTUNITIES = [
     postedDate: "2024-10-28"
   },
   {
-    id: 3,
+    id: 4,
     type: "government",
     title: "Health Sector Supply Tender - Medical Equipment",
     location: "Nationwide, Uganda",
@@ -51,20 +64,20 @@ const OPPORTUNITIES = [
     postedDate: "2024-10-25"
   },
   {
-    id: 4,
+    id: 5,
     type: "agriculture",
-    title: "Coffee Export Partnership - Established Network",
+    title: "Robusta Coffee Processing Plant Partnership",
     location: "Mbale, Uganda",
-    sector: "Agriculture",
-    investmentSize: "$100K - $500K",
+    sector: "Coffee Exports",
+    investmentSize: "$300K - $1M",
     stage: "Active",
-    highlights: ["Export License", "Buyer Network", "Quality Arabica"],
-    description: "Partner with established coffee exporter with direct farmer relationships...",
-    isPremium: false,
+    highlights: ["Processing Facility", "Export License", "Direct Farm Access", "Quality Robusta"],
+    description: "Invest in coffee processing facility with direct access to 500+ smallholder farmers. Full export support and UCDA certification assistance...",
+    isPremium: true,
     postedDate: "2024-10-20"
   },
   {
-    id: 5,
+    id: 6,
     type: "it",
     title: "Government Digitization Project - IT Infrastructure",
     location: "Kampala, Uganda",
@@ -77,7 +90,7 @@ const OPPORTUNITIES = [
     postedDate: "2024-10-15"
   },
   {
-    id: 6,
+    id: 7,
     type: "land",
     title: "Agricultural Land - 200 Acres with Water Access",
     location: "Jinja, Uganda",
@@ -253,7 +266,7 @@ export default function OpportunitiesPage() {
               Verified Investment Opportunities
             </h1>
             <p className="text-xl text-gray-300 mb-8">
-              Access pre-vetted, compliance-ready opportunities across gold, land, government contracts, and more
+              Access pre-vetted, compliance-ready opportunities across gold, coffee, land, government contracts, and more
             </p>
             
             {!isLoggedIn && (
@@ -316,6 +329,7 @@ export default function OpportunitiesPage() {
             >
               <option value="all">All Sectors</option>
               <option value="gold">Gold & Minerals</option>
+              <option value="coffee">Coffee Exports</option>
               <option value="land">Land Acquisitions</option>
               <option value="government">Government Contracts</option>
               <option value="agriculture">Agriculture</option>

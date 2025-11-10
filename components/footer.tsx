@@ -42,7 +42,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
-              Expert compliance facilitation for gold sector transactions and government tenders in Uganda.
+              Expert facilitation for gold, coffee, land, and government contract opportunities in Uganda. Connecting foreign investors to verified local partners.
             </p>
             <div className="space-y-3 text-sm text-gray-300">
               <a
@@ -124,7 +124,7 @@ export default function Footer() {
 
                 <div className="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
           <p className="mb-2">&copy; {currentYear} Uganda Investment Bridge. All rights reserved.</p>
-          <p className="text-gray-500 text-xs">Uganda • East Africa</p>
+          <p className="text-gray-500 text-xs">Uganda • East Africa • Top Coffee & Gold Exporter</p>
           <p className="text-gray-500 mt-2">Uganda Investment Bridge is an Equal Opportunity Employer</p>
         </div>
       </div>

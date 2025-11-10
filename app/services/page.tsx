@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Gem, FileText, DollarSign, Clock, CheckCircle2, AlertCircle, Shield, FileCheck, Users, ArrowRight, Award, Target, Zap, ChevronDown } from "lucide-react"
+import { Gem, FileText, DollarSign, Clock, CheckCircle2, AlertCircle, Shield, FileCheck, Users, ArrowRight, Award, Target, Zap, ChevronDown, Coffee } from "lucide-react"
 import { useState } from "react"
 
 const AccordionItem = ({ title, children, isOpen, onToggle }: { title: string; children: React.ReactNode; isOpen: boolean; onToggle: () => void }) => (
@@ -24,6 +24,7 @@ const AccordionItem = ({ title, children, isOpen, onToggle }: { title: string; c
 
 export default function ServicesPage() {
   const [goldAccordion, setGoldAccordion] = useState<number | null>(null)
+  const [coffeeAccordion, setCoffeeAccordion] = useState<number | null>(null)
   const [tenderAccordion, setTenderAccordion] = useState<number | null>(null)
   const [faqAccordion, setFaqAccordion] = useState<number | null>(null)
 
@@ -68,14 +69,21 @@ export default function ServicesPage() {
       {/* Service Overview Cards */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
             {[
               {
                 icon: <Gem className="h-8 w-8" />,
                 title: "Gold Sector Facilitation",
                 description: "Complete compliance verification for gold transactions",
-                color: "blue",
+                color: "amber",
                 link: "#gold"
+              },
+              {
+                icon: <Coffee className="h-8 w-8" />,
+                title: "Coffee Export Facilitation",
+                description: "UCDA compliance and export support for coffee traders",
+                color: "brown",
+                link: "#coffee"
               },
               {
                 icon: <FileText className="h-8 w-8" />,
@@ -94,7 +102,11 @@ export default function ServicesPage() {
                 className="group relative bg-white border-2 border-gray-200 hover:border-blue-500 rounded-2xl p-8 transition-all hover:shadow-xl"
               >
                 <div className="flex items-start gap-6">
-                  <div className={`w-16 h-16 rounded-xl ${service.color === 'blue' ? 'bg-blue-600' : 'bg-purple-600'} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform`}>
+                  <div className={`w-16 h-16 rounded-xl ${
+                    service.color === 'amber' ? 'bg-amber-600' : 
+                    service.color === 'brown' ? 'bg-amber-800' : 
+                    'bg-purple-600'
+                  } flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform`}>
                     {service.icon}
                   </div>
                   <div className="flex-1">
@@ -262,6 +274,162 @@ export default function ServicesPage() {
                   className="flex items-start gap-3 p-5 bg-white border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-md transition-all"
                 >
                   <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700 font-medium">{item}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Coffee Export Facilitation Service */}
+      <section id="coffee" className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <div className="flex items-start gap-6 mb-12">
+              <div className="w-20 h-20 rounded-2xl bg-amber-800 flex items-center justify-center shadow-xl">
+                <Coffee className="h-10 w-10 text-white" />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                  Coffee Export Facilitation
+                </h2>
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  Navigate Uganda's coffee export sector with UCDA compliance verification, 
+                  farmer partnerships, export licensing, and quality certification support.
+                </p>
+              </div>
+            </div>
+
+            {/* Hero Image */}
+            <div className="relative h-96 rounded-2xl overflow-hidden mb-12 shadow-2xl group">
+              <img
+                src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1200"
+                alt="Coffee export facilitation"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-black/40"></div>
+              <div className="absolute bottom-8 left-8 right-8">
+                <div className="flex items-center gap-4 text-white flex-wrap">
+                  <div className="flex items-center gap-2">
+                    <Shield className="h-5 w-5" />
+                    <span className="font-semibold">UCDA Certified</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Target className="h-5 w-5" />
+                    <span className="font-semibold">Top 10 Global Exporter</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Zap className="h-5 w-5" />
+                    <span className="font-semibold">4-8 Week Timeline</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* What We Do */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">What We Do</h3>
+            <div className="space-y-3">
+              {[
+                {
+                  title: "UCDA Certification & Export License Support",
+                  content: "We assist with Uganda Coffee Development Authority (UCDA) certification and export licensing. This includes quality grading verification, warehouse registration, and export permit applications. We ensure compliance with both Ugandan and international coffee standards."
+                },
+                {
+                  title: "Farmer Partnership Facilitation",
+                  content: "Connect with established farmer cooperatives and smallholder networks. We verify farming practices, certifications (organic, Fair Trade, Rainforest Alliance), and facilitate long-term supply agreements. Our network includes both Arabica (Mount Elgon, Rwenzori) and Robusta farmers."
+                },
+                {
+                  title: "Quality Assessment & Logistics Coordination",
+                  content: "Comprehensive quality control including cupping sessions, moisture content testing, and defect analysis. We coordinate with licensed warehouses, arrange transportation to Mombasa port, and manage export documentation for seamless international shipping."
+                },
+                {
+                  title: "Market Linkages & Buyer Connections",
+                  content: "Access our network of international coffee buyers and roasters. We facilitate sample shipments, negotiate contracts, and provide market intelligence on pricing trends. Support for both specialty coffee (Arabica) and commercial grade (Robusta) markets."
+                }
+              ].map((item, index) => (
+                <AccordionItem
+                  key={index}
+                  title={item.title}
+                  isOpen={coffeeAccordion === index}
+                  onToggle={() => setCoffeeAccordion(coffeeAccordion === index ? null : index)}
+                >
+                  {item.content}
+                </AccordionItem>
+              ))}
+            </div>
+          </div>
+
+          {/* Pricing & Timeline */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-8 bg-white border-2 border-amber-200 rounded-2xl"
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-14 h-14 rounded-xl bg-amber-800 flex items-center justify-center">
+                  <DollarSign className="h-7 w-7 text-white" />
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-gray-900">Pricing</h4>
+                  <p className="text-2xl font-bold text-amber-800 mt-1">From $2,000</p>
+                </div>
+              </div>
+              <p className="text-gray-600">Package pricing based on volume and certification requirements</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-8 bg-white border-2 border-green-200 rounded-2xl"
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-14 h-14 rounded-xl bg-green-600 flex items-center justify-center">
+                  <Clock className="h-7 w-7 text-white" />
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-gray-900">Timeline</h4>
+                  <p className="text-2xl font-bold text-green-600 mt-1">4-8 weeks</p>
+                </div>
+              </div>
+              <p className="text-gray-600">Timeline varies by harvest season and certification requirements</p>
+            </motion.div>
+          </div>
+
+          {/* Deliverables */}
+          <div className="mb-16">
+            <div className="flex items-center gap-3 mb-6">
+              <FileCheck className="h-7 w-7 text-amber-800" />
+              <h3 className="text-2xl font-bold text-gray-900">What You Receive</h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                "UCDA export license assistance",
+                "Farmer partnership agreements",
+                "Quality grading & certification",
+                "Export documentation package",
+                "Logistics & shipping coordination",
+                "Buyer connection & market access"
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="flex items-start gap-3 p-5 bg-white border border-gray-200 rounded-xl hover:border-amber-300 hover:shadow-md transition-all"
+                >
+                  <CheckCircle2 className="h-5 w-5 text-amber-800 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 font-medium">{item}</span>
                 </motion.div>
               ))}
