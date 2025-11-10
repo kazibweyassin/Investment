@@ -138,18 +138,25 @@ const TESTIMONIALS = [
 
 const CASE_STUDIES = [
   {
-    title: "Gold Export Facilitation",
-    challenge: "International investor needed to verify gold supplier compliance and facilitate export documentation",
-    solution: "Complete DGSM compliance verification, supplier due diligence, and export coordination",
-    results: ["$2.5M transaction completed", "100% regulatory compliance", "14-day turnaround"],
+    title: "Coffee Export Partnership Setup",
+    challenge: "European specialty roaster wanted direct trade with Ugandan Arabica farmers but lacked local contacts and UCDA compliance knowledge",
+    solution: "Connected buyer with verified Mount Elgon cooperative, facilitated UCDA certification process, coordinated sample shipments and quality assessment",
+    results: ["10-ton initial contract signed", "UCDA certification completed in 3 weeks", "Long-term supply agreement established"],
+    sector: "Coffee Exports"
+  },
+  {
+    title: "Gold Supplier Due Diligence",
+    challenge: "Dubai-based buyer needed comprehensive DGSM compliance verification for potential gold supplier before proceeding with transaction",
+    solution: "Conducted full due diligence including mining license verification, export documentation review, and on-site supplier assessment",
+    results: ["Supplier verified within 2 weeks", "100% regulatory compliance confirmed", "Client proceeding with $500K pilot transaction"],
     sector: "Gold Sector"
   },
   {
-    title: "Infrastructure Tender Success",
-    challenge: "Foreign contractor lacked local expertise for PPDA tender process",
-    solution: "Full PPDA registration, bid preparation, and stakeholder coordination",
-    results: ["$8M contract secured", "Zero compliance issues", "Ongoing support provided"],
-    sector: "Government Tenders"
+    title: "Government Tender Registration",
+    challenge: "Regional contractor unfamiliar with Uganda's PPDA procurement requirements and registration process",
+    solution: "Guided PPDA registration process, prepared required documentation, provided ongoing compliance advisory and opportunity tracking",
+    results: ["Successfully registered with PPDA", "First bid submitted on schedule", "Client now tracking 3 additional tender opportunities"],
+    sector: "Government Contracts"
   }
 ]
 
