@@ -10,54 +10,62 @@ import {
 } from "lucide-react"
 
 const STATS = [
-  { number: "$50M+", label: "Transactions Facilitated", icon: DollarSign },
-  { number: "100%", label: "Compliance Success", icon: CheckCircle2 },
-  { number: "15+", label: "Countries Served", icon: Globe2 },
-  { number: "98%", label: "Client Satisfaction", icon: Award }
+  { number: "8+", label: "Active Verified Opportunities", icon: Star },
+  { number: "$50M+", label: "Total Deal Value Facilitated", icon: DollarSign },
+  { number: "100%", label: "Compliance Success Rate", icon: CheckCircle2 },
+  { number: "2-6", label: "Week Average Turnaround", icon: Clock },
+  { number: "25+", label: "Countries Served", icon: Globe2 },
+  { number: "15", label: "Years Combined Experience", icon: Award }
 ]
 
 const OPPORTUNITY_CATEGORIES = [
   {
     icon: Gem,
     title: "Gold & Minerals",
-    description: "Verified suppliers, export licenses, quality assurance, and logistics coordination",
+    description: "Verified DGSM-licensed suppliers, export documentation, quality assurance, and logistics",
     stats: "12+ Active Suppliers",
-    color: "border-amber-600"
+    color: "border-amber-600",
+    image: "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=600"
   },
   {
     icon: Coffee,
     title: "Coffee Exports",
-    description: "Uganda's #1 export - Arabica & Robusta, direct farm partnerships, UCDA certified",
+    description: "Uganda's #1 export - Arabica & Robusta, direct farm partnerships, UCDA certified exporters",
     stats: "Top 10 Global Exporter",
-    color: "border-amber-800"
+    color: "border-amber-800",
+    image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=600"
   },
   {
     icon: Landmark,
     title: "Land Acquisitions",
-    description: "Commercial, agricultural, and industrial properties with full title verification",
+    description: "Commercial, agricultural, and industrial properties with verified titles and legal support",
     stats: "50+ Verified Plots",
-    color: "border-emerald-600"
+    color: "border-emerald-600",
+    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600"
   },
   {
     icon: FileText,
     title: "Government Contracts",
-    description: "Health, infrastructure, and supply tenders with bid preparation support",
+    description: "PPDA tenders in health, infrastructure, and supply with full bid preparation support",
     stats: "8 Active Tenders",
-    color: "border-blue-600"
+    color: "border-blue-600",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600"
   },
   {
     icon: Wheat,
-    title: "Agriculture",
-    description: "Farm partnerships, agri-processing, commodity export opportunities",
+    title: "Agriculture & Processing",
+    description: "Farm partnerships, agri-processing plants, commodity exports including grains and produce",
     stats: "15+ Opportunities",
-    color: "border-green-600"
+    color: "border-green-600",
+    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600"
   },
   {
     icon: Server,
-    title: "IT & Infrastructure",
-    description: "Government digitization, telecom projects, and technology partnerships",
+    title: "Infrastructure & Technology",
+    description: "Government digitization, telecom projects, road infrastructure, and tech partnerships",
     stats: "6 Active Projects",
-    color: "border-indigo-600"
+    color: "border-indigo-600",
+    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600"
   }
 ]
 
@@ -232,7 +240,7 @@ export default function HomePage() {
       {/* Stats Section */}
       <section className="py-12 bg-slate-50 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
             {STATS.map((stat, index) => {
               const Icon = stat.icon
               return (
@@ -253,6 +261,105 @@ export default function HomePage() {
               )
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Investment Requirements Box - UIA Style */}
+      <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-50 border-y-2 border-blue-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-2xl shadow-xl border-2 border-blue-300 overflow-hidden"
+          >
+            <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <Shield className="h-7 w-7 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">Access Verified Investment Opportunities</h3>
+                  <p className="text-blue-100 text-sm mt-1">Professional facilitation services for serious investors</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                  <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-green-600" />
+                    Subscription Access
+                  </h4>
+                  <div className="space-y-3 text-gray-700">
+                    <div className="flex items-start gap-2">
+                      <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                      <span><strong>Explorer:</strong> $99/month — Basic opportunities & market reports</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                      <span><strong>Professional:</strong> $299/month — Full access, priority introductions</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                      <span><strong>Enterprise:</strong> Custom pricing — Dedicated support & exclusive deals</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-green-600" />
+                    Investment Minimums
+                  </h4>
+                  <div className="space-y-3 text-gray-700">
+                    <div className="flex items-start gap-2">
+                      <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                      <span><strong>Gold Sector:</strong> $200K minimum investment</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                      <span><strong>Coffee Exports:</strong> $150K minimum investment</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                      <span><strong>Government Tenders:</strong> $500K minimum bid value</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                      <span><strong>Land Acquisitions:</strong> $300K minimum purchase</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-6 mb-6">
+                <div className="flex items-start gap-3">
+                  <Star className="h-6 w-6 text-amber-600 flex-shrink-0" />
+                  <div>
+                    <p className="text-amber-900 font-semibold mb-1">Operating under Uganda Investment Code 1991 (Revised 2019)</p>
+                    <p className="text-amber-800 text-sm">We facilitate compliant investments in partnership with licensed entities including DGSM gold dealers, UCDA-certified coffee exporters, and PPDA-registered contractors.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link 
+                  href="/opportunities"
+                  className="flex-1 px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-all text-center shadow-lg shadow-blue-500/30"
+                >
+                  View All Opportunities
+                </Link>
+                <Link 
+                  href="/contact"
+                  className="flex-1 px-6 py-4 bg-white hover:bg-gray-50 text-slate-900 border-2 border-gray-300 rounded-xl font-semibold transition-all text-center"
+                >
+                  Schedule Consultation
+                </Link>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -280,7 +387,7 @@ export default function HomePage() {
                 <Link
                   key={index}
                   href="/opportunities"
-                  className={`group p-6 bg-white border-2 ${category.color} rounded-xl hover:shadow-lg transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 block`}
+                  className={`group bg-white border-2 ${category.color} rounded-xl hover:shadow-xl transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 block overflow-hidden`}
                   aria-label={`View ${category.title} opportunities`}
                 >
                   <motion.div
@@ -289,19 +396,32 @@ export default function HomePage() {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                   >
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center group-hover:scale-110 transition-transform" aria-hidden="true">
-                      <Icon className="h-6 w-6 text-slate-700" />
+                  {/* Image Header */}
+                  <div className="relative h-40 overflow-hidden">
+                    <img 
+                      src={category.image} 
+                      alt={category.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                      <div className="w-10 h-10 rounded-lg bg-white/90 backdrop-blur-sm flex items-center justify-center" aria-hidden="true">
+                        <Icon className="h-5 w-5 text-slate-900" />
+                      </div>
+                      <span className="text-xs font-semibold text-white bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full">
+                        {category.stats}
+                      </span>
                     </div>
-                    <span className="text-xs font-semibold text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-                      {category.stats}
-                    </span>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">{category.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{category.description}</p>
-                  <div className="flex items-center text-sm font-semibold text-blue-600 group-hover:gap-2 transition-all">
-                    View Opportunities
-                    <ChevronRight className="h-4 w-4" aria-hidden="true" />
+
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">{category.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">{category.description}</p>
+                    <div className="flex items-center text-sm font-semibold text-blue-600 group-hover:gap-2 transition-all">
+                      View Opportunities
+                      <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    </div>
                   </div>
                   </motion.div>
                 </Link>

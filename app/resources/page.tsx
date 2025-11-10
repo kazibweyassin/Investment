@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
-import { FileText, ExternalLink, ArrowRight } from "lucide-react"
+import { FileText, ExternalLink, ArrowRight, Star, Calendar, TrendingUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function ResourcesPage() {
@@ -139,6 +139,132 @@ export default function ResourcesPage() {
               </motion.div>
             ))}
           </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Latest Updates Section */}
+      <section className="section-padding bg-gradient-to-br from-blue-50 to-indigo-50 w-full">
+        <div className="container-full">
+          <div className="container-content">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: [0.21, 1.11, 0.81, 0.99] }}
+              className="text-center mb-16 md:mb-20"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-200 rounded-full mb-6">
+                <Star className="h-4 w-4 text-blue-700" />
+                <span className="text-sm font-semibold text-blue-900">Latest News</span>
+              </div>
+              <h2 className="mb-6">Recent Success Stories & Updates</h2>
+              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-light leading-relaxed">
+                Real deals, market insights, and regulatory updates
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+              {[
+                {
+                  title: "$500K Gold Verification Completed",
+                  date: "November 8, 2025",
+                  category: "Deal Success",
+                  description: "Dubai-based investor successfully verified DGSM-licensed supplier for pilot gold transaction. Full compliance achieved in 2 weeks.",
+                  icon: "💰",
+                  color: "amber"
+                },
+                {
+                  title: "Coffee Export Partnership Facilitated",
+                  date: "November 5, 2025",
+                  category: "New Deal",
+                  description: "Connected European specialty roaster with Mount Elgon Arabica cooperative. 10-ton initial contract signed with long-term supply agreement.",
+                  icon: "☕",
+                  color: "brown"
+                },
+                {
+                  title: "PPDA Tender Registration Success",
+                  date: "November 1, 2025",
+                  category: "Milestone",
+                  description: "Regional contractor now PPDA-registered and tracking 3 active tender opportunities in infrastructure sector.",
+                  icon: "📋",
+                  color: "blue"
+                }
+              ].map((update, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all overflow-hidden border border-gray-200"
+                >
+                  <div className={`h-2 ${
+                    update.color === 'amber' ? 'bg-amber-600' :
+                    update.color === 'brown' ? 'bg-amber-800' :
+                    'bg-blue-600'
+                  }`}></div>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-3xl">{update.icon}</span>
+                      <span className={`text-xs font-semibold px-3 py-1 rounded-full ${
+                        update.color === 'amber' ? 'bg-amber-100 text-amber-700' :
+                        update.color === 'brown' ? 'bg-amber-100 text-amber-900' :
+                        'bg-blue-100 text-blue-700'
+                      }`}>
+                        {update.category}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">{update.title}</h3>
+                    <p className="text-sm text-gray-500 mb-3 flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      {update.date}
+                    </p>
+                    <p className="text-gray-600 leading-relaxed">{update.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Market Insights */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl shadow-xl p-8 border-2 border-blue-200 max-w-4xl mx-auto"
+            >
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
+                  <TrendingUp className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Market Update: Uganda Investment Climate</h3>
+                  <p className="text-sm text-gray-500">Last updated: November 10, 2025</p>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <ArrowRight className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <p className="text-gray-700"><strong>Gold Prices:</strong> Stable at $2,050/oz - Strong export demand continues</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <ArrowRight className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <p className="text-gray-700"><strong>Coffee Sector:</strong> Arabica premiums up 15% YoY - Record harvest expected</p>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <ArrowRight className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <p className="text-gray-700"><strong>Government Tenders:</strong> $2B+ infrastructure pipeline announced</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <ArrowRight className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <p className="text-gray-700"><strong>Investment Climate:</strong> UIA reports 23% increase in foreign investment approvals</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

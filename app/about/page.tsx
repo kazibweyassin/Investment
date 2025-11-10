@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Shield, Eye, Scale, Handshake, CheckCircle2, Award, Users, Building2, Briefcase, Globe, FileCheck, Target, TrendingUp, Zap, Heart, Star } from "lucide-react"
+import { Shield, Eye, Scale, Handshake, CheckCircle2, Award, Users, Building2, Briefcase, Globe, FileCheck, Target, TrendingUp, Zap, Heart, Star, Gem, Coffee, FileText } from "lucide-react"
 
 export default function AboutPage() {
   const approaches = [
@@ -58,7 +58,7 @@ export default function AboutPage() {
               className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-400/30 rounded-full mb-6"
             >
               <Building2 className="h-4 w-4 text-blue-300" />
-              <span className="text-sm font-medium text-blue-200">Est. 2025 • Kampala, Uganda</span>
+              <span className="text-sm font-medium text-blue-200">Est. 2024 • Kampala, Uganda</span>
             </motion.div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -511,6 +511,123 @@ export default function AboutPage() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Government Registration & Credibility */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 rounded-full mb-6">
+              <Shield className="h-4 w-4 text-blue-600" />
+              <span className="text-sm font-semibold text-blue-900">Registered & Licensed</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Government-Compliant Operations
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Operating under Uganda's Investment Code with verified partnerships
+            </p>
+          </motion.div>
+
+          {/* Registration Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-300 rounded-2xl p-8"
+            >
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-16 h-16 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
+                  <Building2 className="h-8 w-8 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">URSB Registered</h3>
+                  <p className="text-blue-900 font-medium">Uganda Registration Services Bureau</p>
+                </div>
+              </div>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                Officially registered business entity with the Uganda Registration Services Bureau, 
+                ensuring legal compliance and transparency in all operations.
+              </p>
+              <div className="flex items-center gap-2 text-blue-700 font-semibold">
+                <CheckCircle2 className="h-5 w-5" />
+                <span>Verified Business Registration</span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-purple-50 to-purple-100 border-2 border-purple-300 rounded-2xl p-8"
+            >
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-16 h-16 rounded-xl bg-purple-600 flex items-center justify-center flex-shrink-0">
+                  <Scale className="h-8 w-8 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Investment Code 1991</h3>
+                  <p className="text-purple-900 font-medium">Revised 2019 - Full Compliance</p>
+                </div>
+              </div>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                Operating in full compliance with Uganda's Investment Code Act, ensuring all facilitated 
+                investments meet legal requirements and regulatory standards.
+              </p>
+              <div className="flex items-center gap-2 text-purple-700 font-semibold">
+                <CheckCircle2 className="h-5 w-5" />
+                <span>Legal Framework Adherence</span>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Licensed Partner Badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-slate-50 rounded-2xl p-8 border-2 border-gray-200"
+          >
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Our Licensed Partners</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-white rounded-xl p-6 border border-amber-200 hover:shadow-lg transition-all">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-lg bg-amber-600 flex items-center justify-center">
+                    <Gem className="h-5 w-5 text-white" />
+                  </div>
+                  <h4 className="font-bold text-gray-900">DGSM Licensed</h4>
+                </div>
+                <p className="text-sm text-gray-600">Directorate of Geological Survey & Mines certified gold dealers</p>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 border border-amber-800 hover:shadow-lg transition-all">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-lg bg-amber-800 flex items-center justify-center">
+                    <Coffee className="h-5 w-5 text-white" />
+                  </div>
+                  <h4 className="font-bold text-gray-900">UCDA Certified</h4>
+                </div>
+                <p className="text-sm text-gray-600">Uganda Coffee Development Authority approved exporters</p>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 border border-purple-200 hover:shadow-lg transition-all">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-lg bg-purple-600 flex items-center justify-center">
+                    <FileText className="h-5 w-5 text-white" />
+                  </div>
+                  <h4 className="font-bold text-gray-900">PPDA Registered</h4>
+                </div>
+                <p className="text-sm text-gray-600">Public Procurement & Disposal of Assets Authority contractors</p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
