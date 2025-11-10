@@ -360,6 +360,63 @@ export default function AboutPage() {
             </motion.div>
           </div>
 
+          {/* Office & Team Images */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="relative h-64 rounded-2xl overflow-hidden group"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800"
+                alt="Modern office workspace"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4">
+                <p className="text-white font-semibold">Professional Workspace</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="relative h-64 rounded-2xl overflow-hidden group"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800"
+                alt="Team collaboration"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4">
+                <p className="text-white font-semibold">Collaborative Environment</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="relative h-64 rounded-2xl overflow-hidden group"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800"
+                alt="Client consultation"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4">
+                <p className="text-white font-semibold">Client-Focused Service</p>
+              </div>
+            </motion.div>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
