@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
+import { COMPANY_NAME } from "@/lib/constants"
 
 export const metadata: Metadata = {
-  title: "Resources | Uganda Investment Bridge",
+  title: `Resources | ${COMPANY_NAME}`,
   description: "Guides, articles, and helpful links for navigating Uganda's investment landscape and regulatory requirements.",
   openGraph: {
-    title: "Resources | Uganda Investment Bridge",
+    title: `Resources | ${COMPANY_NAME}`,
     description: "Guides, articles, and helpful links for navigating Uganda's investment landscape.",
     type: "website",
   },

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Shield, Eye, Scale, Handshake, CheckCircle2, Award, Users, Building2, Briefcase, Globe, FileCheck, Target, TrendingUp, Zap, Heart, Star, Gem, Coffee, FileText } from "lucide-react"
+import { COMPANY_NAME } from "@/lib/constants"
 
 export default function AboutPage() {
   const approaches = [
@@ -196,7 +197,7 @@ export default function AboutPage() {
 
             <div className="relative h-80 rounded-2xl overflow-hidden mb-8 shadow-xl">
               <img
-                src="https://images.unsplash.com/photo-1693064972579-0c1c85c636e8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1113"
+                src="government-tender.jpg"
                 alt="Business growth in Africa"
                 className="w-full h-full object-cover"
               />
@@ -205,7 +206,7 @@ export default function AboutPage() {
 
             <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
               <p>
-                Founded in 2025, <span className="font-semibold text-gray-900">Uganda Investment Bridge</span> was established to address 
+                Founded in 2025, <span className="font-semibold text-gray-900">{COMPANY_NAME}</span> was established to address 
                 the critical gap between promising investment opportunities in Uganda and the regulatory 
                 complexity faced by foreign investors.
               </p>

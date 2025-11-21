@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Home, Info, Briefcase, MapPin, FileText, Mail, ArrowRight, ExternalLink } from "lucide-react"
+import { COMPANY_NAME } from "@/lib/constants"
 
 type SitemapLink = {
   name: string
@@ -62,9 +63,10 @@ export default function SitemapPage() {
       icon: <Briefcase className="h-6 w-6" />,
       color: "indigo",
       links: [
-        { name: "Gold Investment Facilitation", href: "/services#gold", description: "DGSM-licensed gold dealer connections", external: false },
-        { name: "Coffee Export Partnership", href: "/services#coffee", description: "UCDA-certified coffee export opportunities", external: false },
-        { name: "Government Tender Navigation", href: "/services#tenders", description: "PPDA tender application support", external: false },
+        { name: "Gold & Mineral Export Facilitation", href: "/services/gold-minerals", description: "DGSM-licensed gold dealer connections", external: false },
+        { name: "Government Contract Navigation", href: "/services/government-contracts", description: "PPDA tender application support", external: false },
+        { name: "Real Estate Acquisition Support", href: "/services/real-estate", description: "Institutional-grade property sourcing and due diligence", external: false },
+        { name: "Contract Implementation & Delivery", href: "/services/contract-implementation", description: "Execution oversight, reporting, and stakeholder coordination", external: false },
       ] as SitemapLink[]
     },
     {
@@ -101,7 +103,7 @@ export default function SitemapPage() {
               Sitemap
             </h1>
             <p className="text-xl text-gray-300">
-              Complete overview of all pages and resources on Uganda Investment Bridge
+              Complete overview of all pages and resources on {COMPANY_NAME}
             </p>
           </motion.div>
         </div>

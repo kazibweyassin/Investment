@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowLeft, CheckCircle2, AlertTriangle, FileText, Clock, DollarSign } from "lucide-react"
+import { COMPANY_NAME } from "@/lib/constants"
 
 export default function PPDATenderChecklistPage() {
   return (
@@ -418,7 +419,7 @@ export default function PPDATenderChecklistPage() {
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 p-8 rounded-2xl">
               <h2 className="text-2xl font-bold text-slate-900 mb-4">Need Help with PPDA Tender Preparation?</h2>
               <p className="text-gray-700 mb-6">
-                Uganda Investment Bridge offers full PPDA tender preparation services, including document procurement, 
+                {COMPANY_NAME} offers full PPDA tender preparation services, including document procurement, 
                 compliance verification, and submission support. We've helped clients win over UGX 45 billion in government contracts.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowLeft, CheckCircle2, AlertTriangle, Globe, FileText, TrendingUp, DollarSign } from "lucide-react"
+import { COMPANY_NAME } from "@/lib/constants"
 
 export default function GoldExportRequirementsPage() {
   return (
@@ -393,7 +394,7 @@ export default function GoldExportRequirementsPage() {
             <div className="bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-amber-300 p-8 rounded-2xl">
               <h2 className="text-2xl font-bold text-slate-900 mb-4">Need Export Compliance Support?</h2>
               <p className="text-gray-700 mb-6">
-                Uganda Investment Bridge provides end-to-end gold export services, including license procurement, 
+                {COMPANY_NAME} provides end-to-end gold export services, including license procurement, 
                 documentation, customs clearance, and compliance monitoring. We've facilitated over $250M in legal gold exports.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">

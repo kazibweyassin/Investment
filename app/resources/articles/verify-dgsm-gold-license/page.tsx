@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowLeft, CheckCircle2, AlertTriangle, ExternalLink, Shield, FileText } from "lucide-react"
+import Breadcrumbs from "@/components/breadcrumbs"
+import ShareButtons from "@/components/share-buttons"
 
 export default function VerifyDGSMLicensePage() {
   return (
@@ -12,10 +14,13 @@ export default function VerifyDGSMLicensePage() {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIi8+PC9nPjwvc3ZnPg==')] opacity-30"></div>
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href="/resources" className="inline-flex items-center gap-2 text-blue-300 hover:text-blue-200 mb-6 transition-colors">
-            <ArrowLeft className="h-4 w-4" />
-            Back to Resources
-          </Link>
+          <Breadcrumbs 
+            items={[
+              { label: "Resources", href: "/resources" },
+              { label: "How to Verify a DGSM Gold Dealer License" }
+            ]} 
+            className="mb-6 text-gray-300"
+          />
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -26,13 +31,20 @@ export default function VerifyDGSMLicensePage() {
               <Shield className="h-4 w-4 text-amber-400" />
               <span className="text-sm font-semibold text-amber-300">Gold Sector Guide</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              How to Verify a DGSM Gold Dealer License
-            </h1>
-            <p className="text-xl text-gray-300">
+            <div className="flex items-start justify-between gap-4 mb-4">
+              <h1 className="text-4xl md:text-5xl font-bold flex-1">
+                How to Verify a DGSM Gold Dealer License
+              </h1>
+              <ShareButtons 
+                url="/resources/articles/verify-dgsm-gold-license"
+                title="How to Verify a DGSM Gold Dealer License"
+                description="A comprehensive guide to verifying Directorate of Geological Survey and Mines licenses for gold dealers in Uganda"
+              />
+            </div>
+            <p className="text-xl text-gray-300 mb-6">
               A comprehensive guide to verifying Directorate of Geological Survey and Mines licenses for gold dealers in Uganda
             </p>
-            <div className="flex items-center gap-4 mt-6 text-sm text-gray-400">
+            <div className="flex items-center gap-4 text-sm text-gray-400">
               <span>Published: November 10, 2025</span>
               <span>•</span>
               <span>8 min read</span>

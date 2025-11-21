@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { FileText, ExternalLink, ArrowRight, Star, Calendar, TrendingUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Breadcrumbs from "@/components/breadcrumbs"
 
 export default function ResourcesPage() {
   const blogPosts = [
@@ -75,12 +76,15 @@ export default function ResourcesPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.21, 1.11, 0.81, 0.99] }}
-              className="text-center max-w-3xl mx-auto"
+              className="max-w-3xl mx-auto"
             >
-              <h1 className="mb-6">Resources</h1>
-              <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed">
-                Guides, articles, and helpful links for navigating Uganda's investment landscape
-              </p>
+              <Breadcrumbs items={[{ label: "Resources" }]} className="mb-6 text-gray-300" />
+              <div className="text-center">
+                <h1 className="mb-6">Resources</h1>
+                <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed">
+                  Guides, articles, and helpful links for navigating Uganda's investment landscape
+                </p>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -167,7 +171,7 @@ export default function ResourcesPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
               {[
                 {
-                  title: "Uganda Investment Bridge Officially Launched",
+                  title: "Diamond Capital Africa Officially Launched",
                   date: "November 2025",
                   category: "Company News",
                   description: "Launched to bridge international investors with Uganda's verified opportunities in gold, coffee, land, and government contracts.",

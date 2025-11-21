@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select } from "@/components/ui/select"
+import { COMPANY_EMAIL, COMPANY_PHONE, COMPANY_LOCATION } from "@/lib/constants"
 
 // Multi-step form validation schemas
 const step1Schema = z.object({
@@ -578,8 +579,8 @@ export default function ContactPage() {
                 <Mail className="h-6 w-6 text-blue-600" />
               </div>
               <h3 className="font-bold text-slate-900 mb-2">Email</h3>
-              <a href="mailto:info@axleafrica.com" className="text-blue-600 hover:underline">
-                info@axleafrica.com
+              <a href={`mailto:${COMPANY_EMAIL}`} className="text-blue-600 hover:underline">
+                {COMPANY_EMAIL}
               </a>
             </div>
 
@@ -588,8 +589,8 @@ export default function ContactPage() {
                 <Phone className="h-6 w-6 text-blue-600" />
               </div>
               <h3 className="font-bold text-slate-900 mb-2">Phone</h3>
-              <a href="tel:+256123456789" className="text-blue-600 hover:underline">
-                +256 123 456 789
+              <a href={`tel:${COMPANY_PHONE.replace(/[^+\d]/g, "")}`} className="text-blue-600 hover:underline">
+                {COMPANY_PHONE}
               </a>
             </div>
 
@@ -598,7 +599,7 @@ export default function ContactPage() {
                 <MapPin className="h-6 w-6 text-blue-600" />
               </div>
               <h3 className="font-bold text-slate-900 mb-2">Location</h3>
-              <p className="text-gray-600">Kampala, Uganda</p>
+              <p className="text-gray-600">{COMPANY_LOCATION}</p>
             </div>
           </div>
         </div>

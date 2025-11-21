@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import Breadcrumbs from "@/components/breadcrumbs"
 import { 
   Gem, Landmark, FileText, Wheat, Server, Building2,
   MapPin, DollarSign, Calendar, TrendingUp, Lock,
@@ -253,37 +254,50 @@ export default function OpportunitiesPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-slate-900 text-white py-16 overflow-hidden">
+      <section className="relative overflow-hidden bg-slate-900 text-white py-20">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600"
             alt="Investment opportunities"
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-40"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 to-slate-900/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 to-slate-900/85"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
+            className="max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Verified Investment Opportunities
-            </h1>
-            <p className="text-xl text-gray-300 mb-8">
-              Access pre-vetted, compliance-ready opportunities across gold, coffee, land, government contracts, and more
-            </p>
-            
-            {!isLoggedIn && (
-              <div className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600/20 border border-blue-500/30 rounded-lg">
-                <Lock className="h-5 w-5 text-blue-400" />
-                <span className="text-sm font-medium">
-                  Subscribe to unlock {OPPORTUNITIES.length} opportunities
-                </span>
-              </div>
-            )}
+            <Breadcrumbs items={[{ label: "Opportunities" }]} className="mb-6 text-gray-300" />
+            <div className="text-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-400/30 rounded-full mb-6"
+              >
+                <Star className="h-4 w-4 text-blue-300" />
+                <span className="text-sm font-medium text-blue-200">Verified Investment Opportunities</span>
+              </motion.div>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                Opportunities We Execute For You
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-4">
+                From commodities to contracts—we manage complete transaction execution across verified opportunities in key sectors
+              </p>
+              
+              {!isLoggedIn && (
+                <div className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600/20 border border-blue-500/30 rounded-lg mt-8">
+                  <Lock className="h-5 w-5 text-blue-400" />
+                  <span className="text-sm font-medium">
+                    Subscribe to unlock {OPPORTUNITIES.length} opportunities
+                  </span>
+                </div>
+              )}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -312,8 +326,105 @@ export default function OpportunitiesPage() {
         </div>
       </section>
 
+      {/* Sector Overview Cards */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Opportunities We Execute For You
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              From commodities to contracts—we manage complete transaction execution across verified opportunities in key sectors
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+            {[
+              {
+                icon: Gem,
+                title: "Gold & Minerals",
+                count: "12+ Active Suppliers",
+                description: "We execute compliant gold transactions with verified DGSM-licensed suppliers—handling export documentation, quality assurance, and logistics",
+                color: "amber"
+              },
+              {
+                icon: Coffee,
+                title: "Coffee Exports",
+                count: "Top 10 Global Exporter",
+                description: "We execute coffee export deals—Uganda's #1 export, connecting you to Arabica & Robusta suppliers with UCDA certification and direct farm partnerships",
+                color: "amber"
+              },
+              {
+                icon: MapPin,
+                title: "Land Acquisitions",
+                count: "50+ Verified Plots",
+                description: "We execute property acquisitions—commercial, agricultural, and industrial properties with verified titles, full due diligence, and legal support",
+                color: "emerald"
+              },
+              {
+                icon: Landmark,
+                title: "Government Contracts",
+                count: "8 Active Tenders",
+                description: "We execute tender applications—PPDA tenders in health, infrastructure, and supply with complete bid preparation and submission",
+                color: "blue"
+              },
+              {
+                icon: Wheat,
+                title: "Agriculture & Processing",
+                count: "15+ Opportunities",
+                description: "We execute agribusiness deals—farm partnerships, agri-processing plants, commodity exports including grains and produce",
+                color: "green"
+              },
+              {
+                icon: Server,
+                title: "Infrastructure & Technology",
+                count: "6 Active Projects",
+                description: "We execute infrastructure deals—government digitization, telecom projects, road infrastructure, and technology partnerships",
+                color: "indigo"
+              }
+            ].map((sector, index) => (
+              <motion.div
+                key={sector.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all border-2 border-gray-200 hover:border-blue-500"
+              >
+                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-${sector.color}-100 text-${sector.color}-600 mb-4`}>
+                  <sector.icon className="h-8 w-8" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">{sector.title}</h3>
+                <div className="text-sm font-semibold text-blue-600 mb-4">{sector.count}</div>
+                <p className="text-gray-600 leading-relaxed mb-6">{sector.description}</p>
+                <Link href="#opportunities">
+                  <button className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all">
+                    View Opportunities
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link href="#opportunities">
+              <button className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl">
+                View All Opportunities
+                <ArrowRight className="h-5 w-5" />
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Filters & Search */}
-      <section className="py-8 bg-white border-b border-gray-200">
+      <section id="opportunities" className="py-8 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-4">
             {/* Search */}

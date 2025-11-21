@@ -1,7 +1,8 @@
 import { Metadata } from "next"
+import { COMPANY_NAME } from "@/lib/constants"
 
 export const metadata: Metadata = {
-  title: "Investment Opportunities | Uganda Investment Bridge",
+  title: `Investment Opportunities | ${COMPANY_NAME}`,
   description: "Access verified investment opportunities in Uganda - gold, land, government contracts, agriculture, and IT infrastructure.",
 }
 

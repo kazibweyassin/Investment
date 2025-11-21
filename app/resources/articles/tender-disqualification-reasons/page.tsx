@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowLeft, XCircle, CheckCircle2, AlertTriangle, FileText, Clock } from "lucide-react"
+import { COMPANY_NAME } from "@/lib/constants"
 
 export default function BidDisqualificationPage() {
   return (
@@ -458,7 +459,7 @@ export default function BidDisqualificationPage() {
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 p-8 rounded-2xl">
               <h2 className="text-2xl font-bold text-slate-900 mb-4">Professional Bid Review Services</h2>
               <p className="text-gray-700 mb-6">
-                Uganda Investment Bridge offers comprehensive pre-submission bid review to catch disqualification risks 
+                {COMPANY_NAME} offers comprehensive pre-submission bid review to catch disqualification risks 
                 before you submit. Our team has helped clients avoid UGX 2.3 billion in potential losses through thorough 
                 compliance checks.
               </p>

@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
+import { COMPANY_EMAIL, COMPANY_NAME } from "@/lib/constants"
 
 // Initialize Resend lazily to avoid build-time errors
 // Get your API key from https://resend.com/api-keys
 const getResend = () => {
   const apiKey = process.env.RESEND_API_KEY
   if (!apiKey) {
-    throw new Error("RESEND_API_KEY is not set")
+    return null
   }
   return new Resend(apiKey)
 }
@@ -50,9 +51,18 @@ export async function POST(request: NextRequest) {
     // Update the "from" email to match your verified domain in Resend
     // Update the "to" email to your actual business email
     const resend = getResend()
+    if (!resend) {
+      console.warn("RESEND_API_KEY is not set, email not sent")
+      // In development, still return success but log the email
+      console.log("Would send email:", emailSubject, emailHtml)
+      return NextResponse.json(
+        { message: "Contact form received (email service not configured)" },
+        { status: 200 }
+      )
+    }
     const { data, error } = await resend.emails.send({
-      from: "Uganda Investment Bridge <onboarding@resend.dev>", // Replace with your verified domain
-      to: process.env.CONTACT_EMAIL || "info@axleafricapartners.com", // Replace with your email
+      from: `${COMPANY_NAME} <onboarding@resend.dev>`, // Replace with your verified domain
+      to: process.env.CONTACT_EMAIL || COMPANY_EMAIL, // Replace with your email
       reply_to: email,
       subject: emailSubject,
       html: emailHtml,

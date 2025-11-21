@@ -4,6 +4,12 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Mail, Phone, MapPin } from "lucide-react"
 import { cn } from "@/lib/utils"
+import {
+  COMPANY_EMAIL,
+  COMPANY_LOCATION,
+  COMPANY_NAME,
+  COMPANY_PHONE,
+} from "@/lib/constants"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -19,8 +25,8 @@ export default function Footer() {
       { href: "/sitemap", label: "Sitemap" },
     ],
     legal: [
-      { href: "#", label: "Privacy Policy" },
-      { href: "#", label: "Terms of Service" },
+      { href: "/privacy", label: "Privacy Policy" },
+      { href: "/terms", label: "Terms of Service" },
     ],
   }
 
@@ -39,7 +45,7 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
                         <Link href="/" className="flex items-center space-x-2 mb-6">
               <span className="text-2xl font-bold text-white">
-                Uganda Investment Bridge
+                {COMPANY_NAME}
               </span>
             </Link>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
@@ -54,23 +60,23 @@ export default function Footer() {
                 aria-label="View location on map"
               >
                 <MapPin className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
-                <span>Kampala, Uganda</span>
+                <span>{COMPANY_LOCATION}</span>
               </a>
               <a
-                href="mailto:info@axleafricapartners.com"
+                href={`mailto:${COMPANY_EMAIL}`}
                 className="flex items-center gap-2 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary rounded-md px-1 -ml-1"
                 aria-label="Send email"
               >
                 <Mail className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
-                <span>info@axleafricapartners.com</span>
+                <span>{COMPANY_EMAIL}</span>
               </a>
               <a
-                href="tel:+256123456789"
+                href={`tel:${COMPANY_PHONE.replace(/[^+\d]/g, "")}`}
                 className="flex items-center gap-2 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary rounded-md px-1 -ml-1"
                 aria-label="Call phone number"
               >
                 <Phone className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
-                <span>+256 XXX XXX XXX</span>
+                <span>{COMPANY_PHONE}</span>
               </a>
             </div>
           </div>
@@ -124,9 +130,9 @@ export default function Footer() {
         </div>
 
                 <div className="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
-          <p className="mb-2">&copy; {currentYear} Uganda Investment Bridge. All rights reserved.</p>
+          <p className="mb-2">&copy; {currentYear} {COMPANY_NAME}. All rights reserved.</p>
           <p className="text-gray-500 text-xs">Uganda • East Africa • Top Coffee & Gold Exporter</p>
-          <p className="text-gray-500 mt-2">Uganda Investment Bridge is an Equal Opportunity Employer</p>
+          <p className="text-gray-500 mt-2">{COMPANY_NAME} is an Equal Opportunity Employer</p>
         </div>
       </div>
     </footer>

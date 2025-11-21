@@ -1,13 +1,103 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
+import { useState, useEffect } from "react"
 import { 
   Gem, Landmark, FileText, Wheat, Server, 
   CheckCircle2, ArrowRight, Shield, Building2, 
   Globe2, Clock, Award, ChevronRight,
-  MapPin, DollarSign, Star, Coffee
+  MapPin, DollarSign, Star, Coffee, Handshake, Scale, Target, Eye, ClipboardCheck,
+  ChevronLeft, TrendingUp, HelpCircle
 } from "lucide-react"
+import NewsletterSignup from "@/components/newsletter-signup"
+import BackToTop from "@/components/back-to-top"
+import ShareButtons from "@/components/share-buttons"
+
+// Hero Slides Data
+const HERO_SLIDES = [
+  {
+    id: 1,
+    title: "Navigate Uganda's Investment Landscape with Confidence",
+    subtitle: "We execute complex transactions from start to finish—gold exports, government contracts, real estate acquisitions, and contract management.",
+    highlights: [
+      "Independent & Conflict-Free",
+      "Licensed Legal Partnerships", 
+      "Transaction-Based Success"
+    ],
+    cta: {
+      primary: { text: "Explore Our Services", href: "#services" },
+      secondary: { text: "Schedule Consultation", href: "/contact" }
+    },
+    image: "/const.webp",
+    badge: "Your Gateway to Uganda Business"
+  },
+  {
+    id: 2,
+    title: "Gold & Mineral Export Facilitation",
+    subtitle: "End-to-end facilitation for verified DGSM-licensed gold suppliers—from license verification to export documentation and logistics coordination.",
+    highlights: [
+      "12+ Verified DGSM Suppliers",
+      "100% Compliance Guarantee",
+      "2-3 Week Due Diligence"
+    ],
+    cta: {
+      primary: { text: "View Gold Services", href: "/services/gold-minerals" },
+      secondary: { text: "Get Started", href: "/contact" }
+    },
+    image: "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=1920",
+    badge: "Precious Metals & Mining"
+  },
+  {
+    id: 3,
+    title: "Government Tender & Contract Implementation",
+    subtitle: "Navigate Uganda's PPDA procurement process with confidence—from registration to bid submission and contract execution.",
+    highlights: [
+      "8+ Active Tender Opportunities",
+      "Full PPDA Compliance Support",
+      "Bid Preparation & Submission"
+    ],
+    cta: {
+      primary: { text: "Explore Tenders", href: "/services/government-contracts" },
+      secondary: { text: "Register Now", href: "/contact" }
+    },
+    image: "",
+    badge: "Government Procurement"
+  },
+  {
+    id: 4,
+    title: "Uganda Coffee Exports - Direct Trade",
+    subtitle: "Connect with verified Arabica & Robusta exporters. Uganda is Africa's #2 coffee producer with UCDA certification and quality assurance.",
+    highlights: [
+      "Top 10 Global Exporter",
+      "Direct Farm Partnerships",
+      "UCDA Certified Suppliers"
+    ],
+    cta: {
+      primary: { text: "Coffee Export Services", href: "/services/coffee-exports" },
+      secondary: { text: "Request Samples", href: "/contact" }
+    },
+    image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1920",
+    badge: "Agricultural Exports"
+  },
+  {
+    id: 5,
+    title: "Verified Land & Real Estate Acquisitions",
+    subtitle: "Secure commercial, agricultural, and industrial properties with verified titles, comprehensive due diligence, and full legal support.",
+    highlights: [
+      "50+ Verified Properties",
+      "Title Search & Verification",
+      "Legal Documentation Support"
+    ],
+    cta: {
+      primary: { text: "View Properties", href: "/services/land-real-estate" },
+      secondary: { text: "Schedule Viewing", href: "/contact" }
+    },
+    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920",
+    badge: "Real Estate & Land"
+  }
+]
 
 const STATS = [
   { number: "8+", label: "Active Verified Opportunities", icon: Star },
@@ -24,7 +114,7 @@ const OPPORTUNITY_CATEGORIES = [
     title: "Gold & Minerals",
     description: "Verified DGSM-licensed suppliers, export documentation, quality assurance, and logistics",
     stats: "12+ Active Suppliers",
-    color: "border-amber-600",
+    color: "text-amber-600",
     image: "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=600"
   },
   {
@@ -32,7 +122,7 @@ const OPPORTUNITY_CATEGORIES = [
     title: "Coffee Exports",
     description: "Uganda's #1 export - Arabica & Robusta, direct farm partnerships, UCDA certified exporters",
     stats: "Top 10 Global Exporter",
-    color: "border-amber-800",
+    color: "text-amber-800",
     image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=600"
   },
   {
@@ -40,7 +130,7 @@ const OPPORTUNITY_CATEGORIES = [
     title: "Land Acquisitions",
     description: "Commercial, agricultural, and industrial properties with verified titles and legal support",
     stats: "50+ Verified Plots",
-    color: "border-emerald-600",
+    color: "text-emerald-600",
     image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600"
   },
   {
@@ -48,7 +138,7 @@ const OPPORTUNITY_CATEGORIES = [
     title: "Government Contracts",
     description: "PPDA tenders in health, infrastructure, and supply with full bid preparation support",
     stats: "8 Active Tenders",
-    color: "border-blue-600",
+    color: "text-blue-600",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600"
   },
   {
@@ -56,7 +146,7 @@ const OPPORTUNITY_CATEGORIES = [
     title: "Agriculture & Processing",
     description: "Farm partnerships, agri-processing plants, commodity exports including grains and produce",
     stats: "15+ Opportunities",
-    color: "border-green-600",
+    color: "text-green-600",
     image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600"
   },
   {
@@ -64,7 +154,7 @@ const OPPORTUNITY_CATEGORIES = [
     title: "Infrastructure & Technology",
     description: "Government digitization, telecom projects, road infrastructure, and tech partnerships",
     stats: "6 Active Projects",
-    color: "border-indigo-600",
+    color: "text-indigo-600",
     image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600"
   }
 ]
@@ -72,28 +162,18 @@ const OPPORTUNITY_CATEGORIES = [
 const HOW_IT_WORKS_STEPS = [
   {
     step: "01",
-    title: "Discover",
-    description: "Browse verified opportunities or tell us what you're looking for"
+    title: "Discovery & Execution Planning",
+    description: "Free consultation to understand objectives and create a detailed execution roadmap"
   },
   {
     step: "02",
-    title: "Connect",
-    description: "We introduce you to pre-vetted local partners and government contacts"
+    title: "Due Diligence & Verification",
+    description: "License verification, supplier & title checks, and risk assessment by our partners"
   },
   {
     step: "03",
-    title: "Navigate",
-    description: "We handle licenses, permits, legal compliance, and due diligence"
-  },
-  {
-    step: "04",
-    title: "Execute",
-    description: "We facilitate negotiations, contracts, payments, and logistics"
-  },
-  {
-    step: "05",
-    title: "Support",
-    description: "Ongoing operational, compliance, and relationship management"
+    title: "Full Execution & Delivery",
+    description: "We manage all parties, complete all processes, and deliver final results—registered titles, signed contracts, approved exports"
   }
 ]
 
@@ -150,198 +230,225 @@ const CASE_STUDIES = [
     challenge: "European specialty roaster wanted direct trade with Ugandan Arabica farmers but lacked local contacts and UCDA compliance knowledge",
     solution: "Connected buyer with verified Mount Elgon cooperative, facilitated UCDA certification process, coordinated sample shipments and quality assessment",
     results: ["10-ton initial contract signed", "UCDA certification completed in 3 weeks", "Long-term supply agreement established"],
-    sector: "Coffee Exports"
+    sector: "Coffee Exports",
+    image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800"
   },
   {
     title: "Gold Supplier Due Diligence",
     challenge: "Dubai-based buyer needed comprehensive DGSM compliance verification for potential gold supplier before proceeding with transaction",
     solution: "Conducted full due diligence including mining license verification, export documentation review, and on-site supplier assessment",
     results: ["Supplier verified within 2 weeks", "100% regulatory compliance confirmed", "Client proceeding with $500K pilot transaction"],
-    sector: "Gold Sector"
+    sector: "Gold Sector",
+    image: "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=800"
   },
   {
     title: "Government Tender Registration",
     challenge: "Regional contractor unfamiliar with Uganda's PPDA procurement requirements and registration process",
     solution: "Guided PPDA registration process, prepared required documentation, provided ongoing compliance advisory and opportunity tracking",
     results: ["Successfully registered with PPDA", "First bid submitted on schedule", "Client now tracking 3 additional tender opportunities"],
-    sector: "Government Contracts"
+    sector: "Government Contracts",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800"
   }
 ]
 
 export default function HomePage() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const [direction, setDirection] = useState(0)
+
+  // Auto-rotation logic
+  useEffect(() => {
+    if (isPaused) return
+    
+    const timer = setInterval(() => {
+      setDirection(1)
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)
+    }, 40000)
+    
+    return () => clearInterval(timer)
+  }, [isPaused])
+
+  const goToSlide = (index: number) => {
+    setDirection(index > currentSlide ? 1 : -1)
+    setCurrentSlide(index)
+  }
+
+  const goToNextSlide = () => {
+    setDirection(1)
+    setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)
+  }
+
+  const goToPrevSlide = () => {
+    setDirection(-1)
+    setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
+  }
+
+  const currentSlideData = HERO_SLIDES[currentSlide]
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-slate-900 text-white">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=1920')] bg-cover bg-center opacity-5"></div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+      {/* Auto-Rotating Hero Slideshow */}
+      <section 
+        className="relative overflow-hidden bg-slate-900 text-white h-[600px] md:h-[700px]"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl"
+            key={currentSlide}
+            custom={direction}
+            initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction > 0 ? -100 : 100 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="absolute inset-0"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/10 border border-blue-500/20 rounded-full mb-6">
-              <MapPin className="h-4 w-4 text-blue-400" />
-              <span className="text-sm font-medium text-blue-300">Your Gateway to Uganda Business</span>
-            </div>
+            {/* Background Image */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center opacity-60"
+              style={{ backgroundImage: `url('${currentSlideData.image}')` }}
+            />
+            {/* Overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/40 to-slate-900/60"></div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Navigate Uganda's Investment Landscape <br />With Zero Compliance Risk
-            </h1>
-            
-            <p className="text-xl text-gray-300 mb-4 leading-relaxed max-w-2xl">
-              We're the only compliance facilitation firm specializing in gold sector transactions and government tenders. 
-              We verify every detail, handle all documentation, and guarantee 100% regulatory compliance—so you can invest with confidence.
-            </p>
-            
-            <p className="text-lg text-gray-400 mb-8 leading-relaxed max-w-2xl">
-              <strong className="text-white">No surprises. No penalties. No delays.</strong> Just compliant, successful transactions.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <Link 
-                href="/opportunities"
-                className="group px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-900"
-                aria-label="Explore investment opportunities"
+            {/* Content */}
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                className="max-w-4xl"
               >
-                Explore Opportunities
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-              </Link>
-              <Link 
-                href="/contact"
-                className="px-8 py-4 bg-white text-slate-900 hover:bg-gray-100 rounded-lg font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-900"
-                aria-label="Schedule a consultation"
-              >
-                Schedule Consultation
-              </Link>
-            </div>
-
-            {/* Trust Strip */}
-            <div className="flex flex-wrap items-center gap-6 pt-8 border-t border-white/10">
-              <div className="flex items-center gap-2 text-sm text-gray-300">
-                <CheckCircle2 className="h-5 w-5 text-green-400" aria-hidden="true" />
-                <span><strong className="text-white">100% Compliance Guarantee</strong> — We fix any compliance issues at no extra cost</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-300">
-                <CheckCircle2 className="h-5 w-5 text-green-400" aria-hidden="true" />
-                <span><strong className="text-white">2-6 Week Turnaround</strong> — Fast-track your investment timeline</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-300">
-                <CheckCircle2 className="h-5 w-5 text-green-400" aria-hidden="true" />
-                <span><strong className="text-white">Zero Conflict of Interest</strong> — We don't invest, we only facilitate</span>
-              </div>
+                {/* Badge */}
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/20 border border-blue-400/30 rounded-full mb-6"
+                >
+                  <MapPin className="h-4 w-4 text-blue-400" />
+                  <span className="text-sm font-medium text-blue-300">{currentSlideData.badge}</span>
+                </motion.div>
+                
+                {/* Title */}
+                <motion.h1 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+                >
+                  {currentSlideData.title}
+                </motion.h1>
+                
+                {/* Subtitle */}
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="text-xl text-gray-300 mb-6 leading-relaxed max-w-2xl"
+                >
+                  {currentSlideData.subtitle}
+                </motion.p>
+                
+                {/* Highlights */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="flex flex-col sm:flex-row gap-4 mb-8 text-lg text-gray-400"
+                >
+                  {currentSlideData.highlights.map((highlight, index) => (
+                    <span key={index} className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 flex-shrink-0" />
+                      {highlight}
+                      {index < currentSlideData.highlights.length - 1 && (
+                        <span className="hidden sm:inline ml-4">|</span>
+                      )}
+                    </span>
+                  ))}
+                </motion.div>
+                
+                {/* CTAs */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7 }}
+                  className="flex flex-col sm:flex-row gap-4"
+                >
+                  <Link 
+                    href={currentSlideData.cta.primary.href}
+                    className="group px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-all flex items-center justify-center gap-2"
+                  >
+                    {currentSlideData.cta.primary.text}
+                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                  <Link 
+                    href={currentSlideData.cta.secondary.href}
+                    className="px-8 py-4 bg-white text-slate-900 hover:bg-gray-100 rounded-lg font-semibold transition-all"
+                  >
+                    {currentSlideData.cta.secondary.text}
+                  </Link>
+                </motion.div>
+              </motion.div>
             </div>
           </motion.div>
-        </div>
-      </section>
+        </AnimatePresence>
 
-      {/* Stats Section */}
-      <section className="py-12 bg-slate-50 border-y border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            {STATS.map((stat, index) => {
-              const Icon = stat.icon
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-center"
+        {/* Navigation Controls */}
+        <div className="absolute bottom-8 left-0 right-0 z-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between">
+              {/* Navigation Dots */}
+              <div className="flex gap-2">
+                {HERO_SLIDES.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`h-2 rounded-full transition-all ${
+                      index === currentSlide 
+                        ? 'w-8 bg-blue-500' 
+                        : 'w-2 bg-white/30 hover:bg-white/50'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              {/* Prev/Next Buttons */}
+              <div className="flex gap-2">
+                <button
+                  onClick={goToPrevSlide}
+                  className="p-2 bg-white/10 hover:bg-white/20 rounded-lg transition-all"
+                  aria-label="Previous slide"
                 >
-                  <Icon className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-                  <div className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
-                </motion.div>
-              )
-            })}
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  onClick={goToNextSlide}
+                  className="p-2 bg-white/10 hover:bg-white/20 rounded-lg transition-all"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
 
-      {/* Investment Requirements Box - UIA Style */}
-      <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-50 border-y-2 border-blue-200">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Progress Bar */}
+        {!isPaused && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-2xl shadow-xl border-2 border-blue-300 overflow-hidden"
-          >
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                  <Shield className="h-7 w-7 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-white">Access Verified Investment Opportunities</h3>
-                  <p className="text-blue-100 text-sm mt-1">Professional facilitation services for serious investors</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="p-8">
-              <div className="max-w-2xl mx-auto mb-8">
-                <h4 className="text-lg font-bold text-slate-900 mb-6 flex items-center justify-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-green-600" />
-                  Investment Minimums
-                </h4>
-                <div className="space-y-3 text-gray-700">
-                  <div className="flex items-start gap-2">
-                    <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <span><strong>Gold Sector:</strong> $200K minimum investment</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <span><strong>Coffee Exports:</strong> $150K minimum investment</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <span><strong>Government Tenders:</strong> $500K minimum bid value</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <ArrowRight className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <span><strong>Land Acquisitions:</strong> $300K minimum purchase</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-6 mb-6">
-                <div className="flex items-start gap-3">
-                  <Star className="h-6 w-6 text-amber-600 flex-shrink-0" />
-                  <div>
-                    <p className="text-amber-900 font-semibold mb-1">Operating under Uganda Investment Code 1991 (Revised 2019)</p>
-                    <p className="text-amber-800 text-sm">We facilitate compliant investments in partnership with licensed entities including DGSM gold dealers, UCDA-certified coffee exporters, and PPDA-registered contractors.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link 
-                  href="/opportunities"
-                  className="flex-1 px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-all text-center shadow-lg shadow-blue-500/30"
-                >
-                  View All Opportunities
-                </Link>
-                <Link 
-                  href="/contact"
-                  className="flex-1 px-6 py-4 bg-white hover:bg-gray-50 text-slate-900 border-2 border-gray-300 rounded-xl font-semibold transition-all text-center"
-                >
-                  Schedule Consultation
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+            className="absolute bottom-0 left-0 h-1 bg-blue-500"
+            initial={{ width: '0%' }}
+            animate={{ width: '100%' }}
+            transition={{ duration: 40, ease: 'linear' }}
+            key={currentSlide}
+          />
+        )}
       </section>
 
-      {/* Opportunity Categories */}
-      <section className="py-20 bg-white">
+      {/* Our Services */}
+      <section id="services" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -350,22 +457,250 @@ export default function HomePage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Opportunities We Facilitate
+              Our Services
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From commodities to contracts—we connect you to verified opportunities across key sectors
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Complete execution support for your Uganda investment transactions
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {OPPORTUNITY_CATEGORIES.map((category, index) => {
-              const Icon = category.icon
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: Gem,
+                title: "Gold & Mineral Exports",
+                description: "DGSM compliance, export documentation, quality assurance",
+                href: "/services/gold-minerals",
+                bgColor: "bg-amber-100",
+                iconColor: "text-amber-600",
+                image: "https://images.unsplash.com/photo-1705073703601-eed67020c5ee?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              },
+              {
+                icon: Landmark,
+                title: "Government Contracts",
+                description: "PPDA registration, bid preparation, contract management",
+                href: "/services/government-contracts",
+                bgColor: "bg-blue-100",
+                iconColor: "text-blue-600",
+                image: "/bank.jpg"
+              },
+              {
+                icon: Building2,
+                title: "Real Estate Acquisition",
+                description: "Property sourcing, due diligence, title transfer",
+                href: "/services/real-estate",
+                bgColor: "bg-emerald-100",
+                iconColor: "text-emerald-600",
+                image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600"
+              },
+              {
+                icon: ClipboardCheck,
+                title: "Contract Implementation",
+                description: "Delivery tracking, invoicing, compliance reporting",
+                href: "/services/contract-implementation",
+                bgColor: "bg-indigo-100",
+                iconColor: "text-indigo-600",
+                image: "https://images.unsplash.com/photo-1693473279743-a081a1f247c9?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              }
+            ].map((service, index) => {
+              const Icon = service.icon
+              return (
+              <Link 
+                  key={index}
+                  href={service.href}
+                  className="group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-blue-500 hover:shadow-lg transition-all"
+                >
+            <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+            >
+                    <div className="relative h-32 overflow-hidden">
+                      <Image 
+                        src={service.image} 
+                        alt={service.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                      <div className="absolute bottom-3 left-3">
+                        <div className={`w-10 h-10 rounded-lg ${service.bgColor} flex items-center justify-center shadow-lg`}>
+                          <Icon className={`h-5 w-5 ${service.iconColor}`} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="text-sm text-gray-600 mb-4">{service.description}</p>
+                      <div className="flex items-center text-sm font-semibold text-blue-600 group-hover:gap-2 transition-all">
+                Learn More
+                        <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+                    </div>
+            </motion.div>
+                </Link>
+              )
+            })}
+              </div>
+
+          <div className="mt-10 text-center">
+              <Link 
+              href="/services"
+              className="inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all"
+              >
+              View All Services
+              </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Studies - Moved up and made more prominent */}
+      <section id="case-studies" className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Case Studies and Insights
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Real results from real transactions—see how we help investors succeed
+            </p>
+            </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-10">
+            {CASE_STUDIES.map((study, index) => (
+            <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow border-2 border-gray-200"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <Image 
+                    src={study.image} 
+                    alt={study.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <div className="inline-block px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full backdrop-blur-sm bg-opacity-90">
+                      {study.sector}
+                </div>
+                </div>
+              </div>
+                <div className="p-8">
+                  <div className="flex items-start justify-between mb-4">
+                    <h3 className="text-2xl font-bold text-slate-900">{study.title}</h3>
+                    <ShareButtons 
+                      url={`/case-studies/${study.title.toLowerCase().replace(/\s+/g, '-')}`}
+                      title={study.title}
+                      description={study.challenge}
+                    />
+                  </div>
+                  
+                  <div className="space-y-4 mb-6">
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-1 text-sm">Challenge</h4>
+                      <p className="text-sm text-gray-600 leading-relaxed">{study.challenge}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-1 text-sm">Solution</h4>
+                      <p className="text-sm text-gray-600 leading-relaxed">{study.solution}</p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-3 text-sm">Results</h4>
+                    <div className="space-y-2">
+                      {study.results.map((result, i) => (
+                        <div key={i} className="flex items-start gap-2">
+                          <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-gray-700">{result}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+              </div>
+
+          <div className="text-center">
+              <Link 
+              href="/resources"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all"
+              >
+              View All Resources
+              <ArrowRight className="h-5 w-5" />
+              </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Resources & Insights Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Resources and Insights
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Guides, articles, and thought leadership to help you navigate Uganda's investment landscape
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {[
+              {
+                icon: FileText,
+                title: "Guides & Articles",
+                description: "Comprehensive guides on DGSM verification, PPDA tenders, and export requirements",
+                href: "/resources",
+                bgColor: "bg-blue-100",
+                iconColor: "text-blue-600",
+                image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600"
+              },
+              {
+                icon: Star,
+                title: "Success Stories",
+                description: "Learn from real client experiences and transaction outcomes",
+                href: "#case-studies",
+                bgColor: "bg-amber-100",
+                iconColor: "text-amber-600",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600"
+              },
+              {
+                icon: TrendingUp,
+                title: "Market Insights",
+                description: "Stay informed about Uganda's investment opportunities and regulatory updates",
+                href: "/resources",
+                bgColor: "bg-emerald-100",
+                iconColor: "text-emerald-600",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600"
+              }
+            ].map((resource, index) => {
+              const Icon = resource.icon
               return (
                 <Link
                   key={index}
-                  href="/opportunities"
-                  className={`group bg-white border-2 ${category.color} rounded-xl hover:shadow-xl transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 block overflow-hidden`}
-                  aria-label={`View ${category.title} opportunities`}
+                  href={resource.href}
+                  className="group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-blue-500 hover:shadow-lg transition-all"
                 >
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -373,222 +708,36 @@ export default function HomePage() {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                   >
-                  {/* Image Header */}
-                  <div className="relative h-40 overflow-hidden">
-                    <img 
-                      src={category.image} 
-                      alt={category.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-lg bg-white/90 backdrop-blur-sm flex items-center justify-center" aria-hidden="true">
-                        <Icon className="h-5 w-5 text-slate-900" />
+                    <div className="relative h-40 overflow-hidden">
+                      <Image 
+                        src={resource.image} 
+                        alt={resource.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                      <div className="absolute bottom-3 left-3">
+                        <div className={`w-10 h-10 rounded-lg ${resource.bgColor} flex items-center justify-center shadow-lg`}>
+                          <Icon className={`h-5 w-5 ${resource.iconColor}`} />
+                        </div>
                       </div>
-                      <span className="text-xs font-semibold text-white bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full">
-                        {category.stats}
-                      </span>
                     </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">{category.title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4">{category.description}</p>
-                    <div className="flex items-center text-sm font-semibold text-blue-600 group-hover:gap-2 transition-all">
-                      View Opportunities
-                      <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    <div className="p-6">
+                      <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                        {resource.title}
+                      </h3>
+                      <p className="text-sm text-gray-600 mb-4">{resource.description}</p>
+                      <div className="flex items-center text-sm font-semibold text-blue-600 group-hover:gap-2 transition-all">
+                        Explore
+                        <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </div>
                     </div>
-                  </div>
                   </motion.div>
                 </Link>
               )
             })}
           </div>
-
-          <div className="mt-10 text-center">
-            <Link 
-              href="/opportunities"
-              className="inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-              aria-label="View all investment opportunities"
-            >
-              View All Opportunities
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Services */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Two Specialized Services That Protect Your Investment
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              We don't do everything—we do two things exceptionally well: gold sector compliance and government tender navigation. 
-              This specialization means deeper expertise, faster results, and zero compliance mistakes.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Gold Sector Service */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="group bg-white border-2 border-amber-200 rounded-2xl p-8 hover:border-amber-400 hover:shadow-2xl transition-all"
-            >
-              <div className="flex items-start gap-6 mb-6">
-                <div className="w-16 h-16 rounded-xl bg-amber-600 flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
-                  <Gem className="h-8 w-8" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Gold Sector Facilitation</h3>
-                  <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
-                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-amber-100 text-amber-700 rounded-full font-semibold">
-                      <DollarSign className="h-3 w-3" />
-                      From $3,000
-                    </span>
-                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-semibold">
-                      <Clock className="h-3 w-3" />
-                      2-6 weeks
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                <strong className="text-gray-900">The Problem:</strong> Gold transactions in Uganda require complex DGSM compliance, 
-                supply chain verification, and export documentation. One mistake can cost you $50,000+ in penalties or months of delays.
-              </p>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                <strong className="text-gray-900">Our Solution:</strong> We verify every license, audit the entire supply chain, 
-                coordinate secure transactions, and handle all export paperwork. You get a complete compliance package in 2-6 weeks, 
-                guaranteed compliant or we fix it at no extra cost.
-              </p>
-
-              <div className="space-y-3 mb-6">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">DGSM license verification reports</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">Supply chain due diligence</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">Transaction & escrow coordination</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">Export documentation package</span>
-                </div>
-              </div>
-
-              <Link 
-                href="/services#gold"
-                className="w-full px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group-hover:gap-3 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                aria-label="Learn more about gold sector facilitation"
-              >
-                Learn More
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </motion.div>
-
-            {/* Government Tenders Service */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="group bg-white border-2 border-indigo-200 rounded-2xl p-8 hover:border-indigo-400 hover:shadow-2xl transition-all"
-            >
-              <div className="flex items-start gap-6 mb-6">
-                <div className="w-16 h-16 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
-                  <FileText className="h-8 w-8" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Government Tender Navigation</h3>
-                  <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
-                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full font-semibold">
-                      <DollarSign className="h-3 w-3" />
-                      From $2,500
-                    </span>
-                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-semibold">
-                      <Clock className="h-3 w-3" />
-                      2-8 weeks
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                <strong className="text-gray-900">The Problem:</strong> Uganda's PPDA tender system is complex and unforgiving. 
-                Missing documentation, incorrect submissions, or compliance errors mean automatic disqualification—even for qualified bidders.
-              </p>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                <strong className="text-gray-900">Our Solution:</strong> We handle PPDA registration, identify the right tenders, 
-                prepare compliant bids, and coordinate submissions. We've helped clients secure $8M+ in government contracts. 
-                Your bid is professionally prepared, fully compliant, and submitted on time—every time.
-              </p>
-
-              <div className="space-y-3 mb-6">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-indigo-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">PPDA portal registration & setup</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-indigo-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">Tender identification & pre-qualification</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-indigo-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">Bid preparation & compliance checks</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-indigo-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">Contract management support</span>
-                </div>
-              </div>
-
-              <Link 
-                href="/services#tenders"
-                className="w-full px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group-hover:gap-3 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                aria-label="Learn more about government tender navigation"
-              >
-                Learn More
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </motion.div>
-          </div>
-
-          {/* Service Guarantee */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-12 bg-blue-50 border-2 border-blue-200 rounded-2xl p-8"
-          >
-            <div className="flex items-start gap-6">
-              <div className="w-14 h-14 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
-                <Shield className="h-7 w-7 text-white" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">100% Compliance Guarantee</h3>
-                <p className="text-gray-700 leading-relaxed">
-                  We guarantee that all work performed meets or exceeds Uganda's regulatory requirements. 
-                  If we miss a compliance requirement that results in a penalty or delay, we'll work to 
-                  resolve it at no additional cost to you.
-                </p>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -602,15 +751,15 @@ export default function HomePage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              How It Works
+              How We Execute
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              A clear, transparent process from discovery to successful execution
+              A proven three-phase execution model—from analysis to completed delivery
             </p>
           </motion.div>
 
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-8 relative">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
               {/* Connection line for desktop */}
               <div className="hidden md:block absolute top-8 left-0 right-0 h-0.5 bg-gray-300" style={{ width: 'calc(100% - 80px)', marginLeft: '40px' }}></div>
               
@@ -645,109 +794,6 @@ export default function HomePage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Why Foreign Investors Choose Us
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Deep local expertise, transparent processes, and proven track record
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {WHY_CHOOSE.map((item, index) => {
-              const Icon = item.icon
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="p-6 bg-white border border-gray-200 rounded-xl hover:shadow-lg hover:border-blue-500 transition-all group"
-                >
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors">
-                    <Icon className="h-6 w-6 text-blue-600 group-hover:text-white transition-colors" />
-                  </div>
-                  <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
-                </motion.div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Case Studies */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Success Stories
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Real results from real transactions—see how we help investors succeed
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {CASE_STUDIES.map((study, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="p-8">
-                  <div className="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full mb-4">
-                    {study.sector}
-                  </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-4">{study.title}</h3>
-                  
-                  <div className="space-y-4 mb-6">
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-1 text-sm">Challenge</h4>
-                      <p className="text-sm text-gray-600 leading-relaxed">{study.challenge}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-1 text-sm">Solution</h4>
-                      <p className="text-sm text-gray-600 leading-relaxed">{study.solution}</p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-3 text-sm">Results</h4>
-                    <div className="space-y-2">
-                      {study.results.map((result, i) => (
-                        <div key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                          <span className="text-sm text-gray-700">{result}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
               Trusted by International Investors
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -763,7 +809,7 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-6 bg-white border border-gray-200 rounded-xl hover:shadow-lg transition-shadow"
+                className="p-6 bg-white border-2 border-gray-200 rounded-xl hover:shadow-xl hover:border-blue-400 transition-all"
               >
                 <div className="text-4xl mb-4">{testimonial.flag}</div>
                 <p className="text-gray-700 mb-6 leading-relaxed italic text-sm">"{testimonial.quote}"</p>
@@ -778,55 +824,350 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative overflow-hidden bg-slate-900 text-white py-20">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-            backgroundSize: '40px 40px'
-          }}></div>
-        </div>
-        
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* The Diamond Advantage */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-              Ready to Invest in Uganda Without the Compliance Headaches?
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              The Diamond Advantage
             </h2>
-            
-            <p className="text-xl text-gray-300 leading-relaxed mb-6 max-w-2xl mx-auto">
-              Stop worrying about regulatory compliance. We handle it all—from license verification to export documentation. 
-              You focus on your investment; we ensure it's 100% compliant.
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              We execute transactions from start to finish—not just connect parties or provide advice
             </p>
-            
-            <p className="text-lg text-gray-400 mb-10 max-w-2xl mx-auto">
-              <strong className="text-white">Free 30-minute consultation</strong> to discuss your specific needs. 
-              Get a detailed quote within 24 hours. No obligation.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/contact"
-                className="group px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-900 shadow-lg hover:shadow-xl"
-                aria-label="Schedule a free consultation"
-              >
-                Get Free Consultation
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-              </Link>
-              <Link 
-                href="/services"
-                className="px-8 py-4 bg-white text-slate-900 hover:bg-gray-100 rounded-lg font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-900"
-                aria-label="View our services and pricing"
-              >
-                View Services & Pricing
-              </Link>
-            </div>
           </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Traditional Approach */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-red-50 border-2 border-red-300 rounded-2xl p-8"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Traditional Approach</h3>
+              <div className="space-y-4">
+                {[
+                  "Brokers with conflicts (earn more if you overpay)",
+                  "Surface-level checks (miss hidden risks)",
+                  "Transactional relationships (disappear after deal)",
+                  "Commission-only (pressure to close fast)"
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <span className="text-red-600 text-xl flex-shrink-0">✗</span>
+                    <span className="text-gray-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Axle Approach */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-emerald-50 border-2 border-emerald-300 rounded-2xl p-8"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Axle Africa Advisory</h3>
+              <div className="space-y-4">
+                {[
+                  "Independent facilitation (no competing interests)",
+                  "Institutional-grade due diligence (lawyers + surveyors)",
+                  "Long-term partnerships (reputation-driven)",
+                  "Transparent pricing (success-based with protections)"
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
+
+      {/* Stats Section */}
+      <section className="py-12 bg-slate-50 border-y border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Trust Signals - 4 columns */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              {
+                icon: Shield,
+                title: "Licensed in Uganda",
+                description: "URSB registered, URA compliant, professionally insured"
+              },
+              {
+                icon: Scale,
+                title: "Independent Advisory",
+                description: "We don't invest, trade, or compete with clients"
+              },
+              {
+                icon: Handshake,
+                title: "Top-Tier Partnerships",
+                description: "Kampala's leading law firms, surveyors, and specialists"
+              },
+              {
+                icon: Target,
+                title: "Transaction Success",
+                description: "Transparent pricing. Paid on results."
+              }
+            ].map((badge, index) => {
+              const Icon = badge.icon
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="text-center"
+                >
+                  <Icon className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+                  <div className="text-base md:text-lg font-bold text-slate-900 mb-2">
+                    {badge.title}
+                  </div>
+                  <div className="text-sm text-gray-600">{badge.description}</div>
+                </motion.div>
+              )
+            })}
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 border-t pt-12 border-gray-200">
+            {STATS.map((stat, index) => {
+              const Icon = stat.icon
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="text-center"
+                >
+                  <Icon className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+                  <div className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">
+                    {stat.number}
+                  </div>
+                  <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+              <HelpCircle className="h-8 w-8 text-blue-600" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-gray-600">
+              Common questions from international investors
+            </p>
+          </motion.div>
+
+          <div className="space-y-4">
+            {[
+              {
+                question: "What is the minimum investment required?",
+                answer: "Minimum investments vary by sector: Gold & Minerals ($200K), Coffee Exports ($150K), Government Contracts ($500K bid value), and Land Acquisitions ($300K). We work with investors across all sizes."
+              },
+              {
+                question: "How long does the transaction process take?",
+                answer: "Typical timelines range from 2-8 weeks depending on the transaction type. Gold exports: 4-8 weeks, Government contracts: 8-16 weeks for bid process, Land acquisitions: 3-6 months for title transfer."
+              },
+              {
+                question: "Do you provide financing?",
+                answer: "We facilitate connections with trade finance providers but do not provide direct financing. Buyers typically need to show proof of funds or secure financing independently."
+              },
+              {
+                question: "How do you verify suppliers and opportunities?",
+                answer: "We conduct comprehensive due diligence including license verification (DGSM, UCDA, PPDA), on-site assessments, title searches, and compliance reviews. All opportunities are pre-vetted before presentation."
+              },
+              {
+                question: "What are your fees?",
+                answer: "Our fees are transaction-based and transparent. Typically 3-5% of transaction value for facilitation services. We provide complete cost breakdowns before you commit to any transaction."
+              },
+              {
+                question: "Can foreigners own property in Uganda?",
+                answer: "Yes, foreigners can own property through a locally registered company or long-term lease. We coordinate with corporate secretaries and lawyers to set up compliant holding structures when required."
+              }
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="bg-slate-50 rounded-xl p-6 border border-gray-200"
+              >
+                <h3 className="text-lg font-bold text-slate-900 mb-2">{faq.question}</h3>
+                <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Our Team
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Experienced professionals with deep knowledge of Uganda's investment landscape
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                name: "Leadership Team",
+                role: "Investment Advisory",
+                description: "15+ years combined experience in cross-border transactions and regulatory compliance",
+                expertise: ["Gold Sector", "Government Contracts", "Real Estate"]
+              },
+              {
+                name: "Legal Partners",
+                role: "Compliance & Due Diligence",
+                description: "Top-tier Kampala law firms specializing in corporate law, land transactions, and regulatory compliance",
+                expertise: ["Title Verification", "Corporate Structuring", "Regulatory Compliance"]
+              },
+              {
+                name: "Technical Advisors",
+                role: "Due Diligence & Verification",
+                description: "Licensed surveyors, auditors, and technical experts ensuring comprehensive verification",
+                expertise: ["Land Surveys", "Financial Audits", "Quality Assurance"]
+              }
+            ].map((member, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-slate-50 rounded-xl p-6 border border-gray-200"
+              >
+                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4 mx-auto">
+                  {member.name.charAt(0)}
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 text-center mb-1">{member.name}</h3>
+                <p className="text-sm text-blue-600 text-center mb-3">{member.role}</p>
+                <p className="text-sm text-gray-600 text-center mb-4">{member.description}</p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {member.expertise.map((skill, i) => (
+                    <span key={i} className="px-2 py-1 bg-white text-xs font-medium text-gray-700 rounded-full">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications & Licenses */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Certifications & Partnerships
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Licensed, registered, and partnered with Uganda's leading institutions
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: "URSB Registered",
+                description: "Uganda Registration Services Bureau",
+                icon: FileText,
+                bgColor: "bg-blue-100",
+                iconColor: "text-blue-600"
+              },
+              {
+                title: "URA Compliant",
+                description: "Uganda Revenue Authority",
+                icon: Shield,
+                bgColor: "bg-green-100",
+                iconColor: "text-green-600"
+              },
+              {
+                title: "Licensed Partners",
+                description: "DGSM, UCDA, PPDA certified partners",
+                icon: Award,
+                bgColor: "bg-amber-100",
+                iconColor: "text-amber-600"
+              },
+              {
+                title: "Professional Insurance",
+                description: "Fully insured and bonded",
+                icon: Scale,
+                bgColor: "bg-indigo-100",
+                iconColor: "text-indigo-600"
+              }
+            ].map((cert, index) => {
+              const Icon = cert.icon
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white rounded-xl p-6 border-2 border-gray-200 text-center hover:border-blue-500 transition-all"
+                >
+                  <div className={`w-12 h-12 ${cert.bgColor} rounded-lg flex items-center justify-center mx-auto mb-4`}>
+                    <Icon className={`h-6 w-6 ${cert.iconColor}`} />
+                  </div>
+                  <h3 className="font-bold text-slate-900 mb-2">{cert.title}</h3>
+                  <p className="text-sm text-gray-600">{cert.description}</p>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Signup */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <NewsletterSignup />
+        </div>
+      </section>
+
+      <BackToTop />
     </div>
   )
 }
