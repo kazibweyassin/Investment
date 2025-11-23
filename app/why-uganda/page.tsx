@@ -1,183 +1,145 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
+import Link from "next/link"
 import { 
   Building2, 
   Globe, 
-  Factory, 
   TrendingUp, 
   Network, 
-  Lightbulb, 
   Mountain, 
-  Banknote, 
   Users, 
-  Heart,
   ArrowRight,
   CheckCircle2,
-  AlertTriangle,
-  FileText,
-  Briefcase,
   MapPin,
   Award,
   Target,
-  Zap
+  Shield,
+  Briefcase,
+  BarChart3
 } from "lucide-react"
-
-const reasons = [
-  {
-    icon: <Building2 className="h-8 w-8" />,
-    title: "Strategic Infrastructure & Logistics",
-    description: "Uganda's strategic location in East Africa, coupled with ongoing infrastructure investments, positions it as a key gateway to the region.",
-    color: "blue"
-  },
-  {
-    icon: <Globe className="h-8 w-8" />,
-    title: "Growing Multinational Presence",
-    description: "Increasingly becoming the investment destination of choice for global corporates looking to expand in East Africa.",
-    color: "teal"
-  },
-  {
-    icon: <Factory className="h-8 w-8" />,
-    title: "Emerging Manufacturing Hub",
-    description: "Developing manufacturing sector presents opportunities to establish production facilities serving regional markets.",
-    color: "green"
-  },
-  {
-    icon: <TrendingUp className="h-8 w-8" />,
-    title: "Lucrative Emerging Market",
-    description: "Rapidly growing population and expanding middle class present attractive returns on investment opportunities.",
-    color: "orange"
-  },
-  {
-    icon: <Network className="h-8 w-8" />,
-    title: "Favorable Market Access",
-    description: "EAC and AfCFTA membership provides access to markets of over 1.3 billion people across Africa.",
-    color: "blue"
-  },
-  {
-    icon: <Lightbulb className="h-8 w-8" />,
-    title: "Innovation & Technology Hub",
-    description: "Fast becoming a technology hub in East Africa with a growing ecosystem supporting digital innovation.",
-    color: "blue"
-  },
-  {
-    icon: <Mountain className="h-8 w-8" />,
-    title: "Abundant Natural Resources",
-    description: "Rich in natural resources including gold, oil, and agricultural products with significant untapped potential.",
-    color: "green"
-  },
-  {
-    icon: <Banknote className="h-8 w-8" />,
-    title: "Growing Financial Services",
-    description: "Well-developed and growing financial sector with stable banking system and regional integration.",
-    color: "orange"
-  },
-  {
-    icon: <Users className="h-8 w-8" />,
-    title: "Young, Trainable Workforce",
-    description: "One of the youngest populations globally with over 70% under 30, offering motivated, trainable labor.",
-    color: "blue"
-  },
-  {
-    icon: <Heart className="h-8 w-8" />,
-    title: "Excellent Quality of Life",
-    description: "Renowned for natural beauty, stable climate, and welcoming culture with modern amenities in major cities.",
-    color: "blue"
-  },
-]
 
 export default function WhyUgandaPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-slate-900 text-white py-20">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=1600"
-            alt="Uganda landscape"
-            className="w-full h-full object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 to-slate-900/90"></div>
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-5xl mx-auto"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/20 border border-green-400/30 rounded-full mb-8"
-            >
-              <MapPin className="h-4 w-4 text-green-300" />
-              <span className="text-sm font-medium text-green-200">The Pearl of Africa</span>
-            </motion.div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Why Invest in 
-              <span className="text-primary"> Uganda?</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-gray-300 mb-6 leading-relaxed">
-              Uganda is the preferred location for strategic investment in East Africa. 
-              Its unique value proposition makes it an attractive destination for a growing array 
-              of investors and industries.
-            </p>
-            
-            <p className="text-lg text-gray-400 mb-10 leading-relaxed max-w-3xl mx-auto">
-              Today, Uganda is not only a resource-rich economy with access to vibrant local and 
-              regional markets, but also an emerging financial, technical, and innovation hub.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="group px-8 py-4 bg-green-600 hover:bg-green-700 rounded-lg font-semibold text-lg transition-all hover:shadow-xl hover:shadow-green-500/20 flex items-center justify-center gap-2">
-                Explore Opportunities
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="px-8 py-4 bg-transparent border-2 border-white/30 hover:border-white hover:bg-white/5 rounded-lg font-semibold text-lg transition-all">
-                Contact Us
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Quick Stats */}
-      <section className="py-16 bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { number: "48M+", label: "Population", description: "Fastest-growing in Africa", icon: <Users className="h-6 w-6" /> },
-              { number: "5.3%", label: "Avg GDP Growth", description: "Consistent economic growth", icon: <TrendingUp className="h-6 w-6" /> },
-              { number: "70%", label: "Under Age 30", description: "Young, dynamic workforce", icon: <Award className="h-6 w-6" /> }
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="relative group"
-              >
-                <div className="absolute inset-0 bg-green-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="relative p-8 bg-white border-2 border-gray-200 rounded-2xl text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-100 text-green-600 mb-4">
-                    {stat.icon}
+      {/* Hero Section - Split Layout */}
+      <section className="py-0 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-0">
+            {/* Left Side - Image */}
+            <div className="relative min-h-[500px] lg:min-h-[700px]">
+              <Image
+                src="/uganda-landscape.jpg"
+                alt="Uganda landscape"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-slate-900/40"></div>
+              
+              <div className="absolute inset-0 flex flex-col justify-center px-8 lg:px-12">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-full mb-6">
+                    <MapPin className="h-4 w-4" />
+                    <span>East Africa Investment Hub</span>
                   </div>
-                  <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">{stat.number}</div>
-                  <div className="text-lg font-semibold text-gray-900 mb-1">{stat.label}</div>
-                  <p className="text-sm text-gray-600">{stat.description}</p>
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                    Why Invest<br />in Uganda?
+                  </h1>
+                  <p className="text-xl text-gray-300 leading-relaxed max-w-lg mb-8">
+                    Strategic location, robust economic growth, and unmatched market access across East Africa
+                  </p>
+                </motion.div>
+              </div>
+            </div>
+
+            {/* Right Side - Key Stats Dashboard */}
+            <div className="bg-slate-50 px-8 lg:px-12 py-16 lg:py-20 flex flex-col justify-center">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <h2 className="text-3xl font-bold text-slate-900 mb-8">Investment Fundamentals</h2>
+                
+                <div className="space-y-6">
+                  {[
+                    {
+                      icon: Users,
+                      label: "Population",
+                      value: "48M+",
+                      detail: "70% under age 30",
+                      trend: "+3.2% annually"
+                    },
+                    {
+                      icon: TrendingUp,
+                      label: "GDP Growth",
+                      value: "5.3%",
+                      detail: "Average annual rate",
+                      trend: "Consistent expansion"
+                    },
+                    {
+                      icon: Network,
+                      label: "Market Access",
+                      value: "1.3B",
+                      detail: "People via EAC & AfCFTA",
+                      trend: "Regional integration"
+                    },
+                    {
+                      icon: Mountain,
+                      label: "Key Exports",
+                      value: "$3.5B",
+                      detail: "Gold, coffee, agriculture",
+                      trend: "Growing trade volume"
+                    }
+                  ].map((stat, index) => {
+                    const Icon = stat.icon
+                    return (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 + index * 0.1 }}
+                        className="bg-white rounded-xl p-5 border border-gray-200 hover:shadow-md transition-shadow"
+                      >
+                        <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                            <Icon className="h-6 w-6 text-blue-600" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm text-gray-600 mb-1">{stat.label}</div>
+                            <div className="text-2xl font-bold text-slate-900 mb-1">{stat.value}</div>
+                            <div className="text-sm text-gray-700">{stat.detail}</div>
+                            <div className="text-xs text-blue-600 mt-1 font-medium">{stat.trend}</div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )
+                  })}
+                </div>
+
+                <div className="mt-8 pt-8 border-t border-gray-300">
+                  <Link
+                    href="/opportunities"
+                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold group"
+                  >
+                    Explore investment opportunities
+                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
               </motion.div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 10 Reasons */}
+      {/* Core Investment Pillars */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -186,110 +148,213 @@ export default function WhyUgandaPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 rounded-full mb-6">
-              <Target className="h-4 w-4 text-green-600" />
-              <span className="text-sm font-semibold text-green-900">Investment Opportunities</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              10 Reasons to Choose Uganda
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Uganda's Investment Advantages
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore the key pillars of Uganda's unique value proposition for foreign direct investment
+              Five core pillars that make Uganda East Africa's premier investment destination
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {reasons.map((reason, index) => (
+          <div className="space-y-8">
+            {[
+              {
+                icon: MapPin,
+                title: "Strategic Location & Market Access",
+                description: "Landlocked yet strategically positioned at the heart of East Africa with EAC and AfCFTA membership providing tariff-free access to 1.3 billion consumers across 54 African countries.",
+                metrics: [
+                  { label: "Regional Population", value: "300M+" },
+                  { label: "Continental Access", value: "1.3B" },
+                  { label: "Trade Partners", value: "54" }
+                ]
+              },
+              {
+                icon: Mountain,
+                title: "Resource-Rich Economy",
+                description: "Abundant natural resources including gold (top 10 global exporter), commercial oil reserves, fertile agricultural land, and renewable energy potential.",
+                metrics: [
+                  { label: "Gold Exports", value: "$2.1B" },
+                  { label: "Coffee Production", value: "Top 10" },
+                  { label: "Arable Land", value: "34M+ ha" }
+                ]
+              },
+              {
+                icon: Users,
+                title: "Young, Trainable Workforce",
+                description: "One of the world's youngest populations with 70% under age 30, providing a large pool of motivated, trainable talent with competitive labor costs.",
+                metrics: [
+                  { label: "Working Age Pop", value: "48M" },
+                  { label: "Youth (Under 30)", value: "70%" },
+                  { label: "Annual Growth", value: "+3.2%" }
+                ]
+              },
+              {
+                icon: Building2,
+                title: "Business-Friendly Environment",
+                description: "Stable macroeconomic policies, competitive tax incentives, minimal capital requirements, and streamlined company registration through URSB.",
+                metrics: [
+                  { label: "Corporate Tax", value: "30%" },
+                  { label: "VAT Rate", value: "18%" },
+                  { label: "Min. Capital", value: "None" }
+                ]
+              },
+              {
+                icon: TrendingUp,
+                title: "Consistent Economic Growth",
+                description: "Average GDP growth of 5.3% over the past decade with diversified economy spanning agriculture, services, manufacturing, and emerging sectors.",
+                metrics: [
+                  { label: "Avg GDP Growth", value: "5.3%" },
+                  { label: "GDP (2024)", value: "$45B" },
+                  { label: "FDI Inflows", value: "$1.3B" }
+                ]
+              }
+            ].map((pillar, index) => {
+              const Icon = pillar.icon
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-blue-500 hover:shadow-xl transition-all"
+                >
+                  <div className="grid md:grid-cols-3 gap-0">
+                    {/* Left: Icon & Title */}
+                    <div className="bg-slate-50 p-8 flex flex-col justify-center">
+                      <div className="w-14 h-14 rounded-xl bg-blue-600 flex items-center justify-center mb-4">
+                        <Icon className="h-7 w-7 text-white" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-slate-900 mb-3">{pillar.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{pillar.description}</p>
+                    </div>
+
+                    {/* Right: Metrics */}
+                    <div className="md:col-span-2 p-8 bg-white">
+                      <div className="flex items-center gap-2 mb-6">
+                        <BarChart3 className="h-5 w-5 text-blue-600" />
+                        <h4 className="font-semibold text-slate-900">Key Metrics</h4>
+                      </div>
+                      <div className="grid grid-cols-3 gap-6">
+                        {pillar.metrics.map((metric, i) => (
+                          <div key={i} className="text-center">
+                            <div className="text-3xl font-bold text-blue-600 mb-2">{metric.value}</div>
+                            <div className="text-sm text-gray-600">{metric.label}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Priority Investment Sectors */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Priority Investment Sectors
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              High-growth opportunities across Uganda's diversified economy
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              {
+                sector: "Gold & Minerals",
+                value: "$2.1B",
+                metric: "Annual exports",
+                opportunity: "12+ verified DGSM-licensed suppliers",
+                growth: "Top 10 global gold exporter",
+                href: "/opportunities/gold-minerals"
+              },
+              {
+                sector: "Government Contracts",
+                value: "$800M+",
+                metric: "Annual procurement",
+                opportunity: "8 active PPDA tenders tracked",
+                growth: "Health, infrastructure, IT sectors",
+                href: "/opportunities/government-contracts"
+              },
+              {
+                sector: "Commercial Agriculture",
+                value: "$950M",
+                metric: "Coffee exports",
+                opportunity: "Direct farm partnerships available",
+                growth: "Arabica & Robusta, top 10 exporter",
+                href: "/opportunities/coffee-exports"
+              },
+              {
+                sector: "Real Estate",
+                value: "$200M+",
+                metric: "Annual investment",
+                opportunity: "50+ verified commercial properties",
+                growth: "Kampala & industrial zones",
+                href: "/opportunities/land-acquisitions"
+              }
+            ].map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="group relative bg-white border-2 border-gray-200 hover:border-green-500 rounded-2xl p-8 transition-all hover:shadow-xl"
+                transition={{ delay: index * 0.1 }}
               >
-                <div className="absolute top-6 right-6 text-6xl font-bold text-gray-100 group-hover:text-green-50 transition-colors">
-                  {index + 1}
-                </div>
-                
-                <div className="relative">
-                  <div className={`w-16 h-16 rounded-xl ${
-                    reason.color === 'blue' ? 'bg-blue-600' :
-                    reason.color === 'purple' ? 'bg-purple-600' :
-                    reason.color === 'green' ? 'bg-green-600' :
-                    'bg-orange-600'
-                  } flex items-center justify-center text-white mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
-                    {reason.icon}
+                <Link
+                  href={item.href}
+                  className="block group bg-white border-2 border-gray-200 hover:border-blue-500 rounded-2xl p-8 hover:shadow-xl transition-all h-full"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <h3 className="text-2xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                      {item.sector}
+                    </h3>
+                    <ArrowRight className="h-6 w-6 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
                   </div>
                   
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 pr-12">{reason.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{reason.description}</p>
-                </div>
+                  <div className="mb-6">
+                    <div className="text-4xl font-bold text-blue-600 mb-1">{item.value}</div>
+                    <div className="text-sm text-gray-600">{item.metric}</div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">{item.opportunity}</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <Target className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">{item.growth}</span>
+                    </div>
+                  </div>
+                </Link>
               </motion.div>
             ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/opportunities"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all"
+            >
+              View all investment opportunities
+              <ArrowRight className="h-5 w-5" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Key Sectors */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Key Investment Sectors
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Diverse opportunities across multiple high-growth sectors
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { name: "Gold & Mining", icon: <Mountain className="h-5 w-5" />, color: "yellow" },
-              { name: "Government Tenders", icon: <FileText className="h-5 w-5" />, color: "blue" },
-              { name: "Agriculture", icon: <Heart className="h-5 w-5" />, color: "green" },
-              { name: "Infrastructure", icon: <Building2 className="h-5 w-5" />, color: "purple" },
-              { name: "Financial Services", icon: <Banknote className="h-5 w-5" />, color: "blue" },
-              { name: "Energy & Power", icon: <Zap className="h-5 w-5" />, color: "yellow" },
-              { name: "Manufacturing", icon: <Factory className="h-5 w-5" />, color: "orange" },
-              { name: "Technology", icon: <Lightbulb className="h-5 w-5" />, color: "purple" },
-            ].map((sector, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className={`p-6 ${
-                  sector.color === 'yellow' ? 'bg-yellow-50 border-yellow-200' :
-                  sector.color === 'blue' ? 'bg-blue-50 border-blue-200' :
-                  sector.color === 'green' ? 'bg-green-50 border-green-200' :
-                  sector.color === 'blue' ? 'bg-blue-40 border-blue-100' :
-                  'bg-orange-50 border-orange-200'
-                } border-2 rounded-xl hover:shadow-lg transition-all group cursor-pointer`}
-              >
-                <div className={`inline-flex items-center justify-center w-10 h-10 rounded-lg ${
-                  sector.color === 'yellow' ? 'bg-yellow-600' :
-                  sector.color === 'blue' ? 'bg-blue-600' :
-                  sector.color === 'green' ? 'bg-green-600' :
-                  sector.color === 'blue' ? 'bg-blue-400' :
-                  'bg-orange-600'
-                } text-white mb-3 group-hover:scale-110 transition-transform`}>
-                  {sector.icon}
-                </div>
-                <h3 className="font-bold text-gray-900">{sector.name}</h3>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Investment Best Practices */}
+      {/* Investment Readiness & Support */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -298,168 +363,118 @@ export default function WhyUgandaPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 rounded-full mb-6">
-              <Briefcase className="h-4 w-4 text-blue-600" />
-              <span className="text-sm font-semibold text-blue-900">Expert Guidance</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Investment Best Practices
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Investment Readiness Checklist
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Key recommendations to ensure your investment success in Uganda
+              Essential requirements and best practices for successful Uganda investments
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
               {
-                icon: <FileText className="h-7 w-7" />,
-                title: "Understand Regulations",
-                description: "Familiarize yourself with DGSM licensing, PPDA registration, and URSB company requirements before investing.",
-                tip: "Our compliance services navigate these requirements",
-                color: "blue"
+                icon: Shield,
+                title: "Regulatory Compliance",
+                items: [
+                  "URSB company registration",
+                  "URA tax registration (TIN)",
+                  "DGSM licensing (gold sector)",
+                  "PPDA registration (government contracts)"
+                ]
               },
               {
-                icon: <Users className="h-7 w-7" />,
-                title: "Partner with Experts",
-                description: "Work with local partners who understand the regulatory landscape and have proven compliance track records.",
-                tip: "We provide local expertise with international standards",
-                color: "green"
+                icon: Briefcase,
+                title: "Due Diligence Requirements",
+                items: [
+                  "Verify all licenses and permits",
+                  "Legal title verification",
+                  "Financial audits and background checks",
+                  "Regulatory compliance confirmation"
+                ]
               },
               {
-                icon: <AlertTriangle className="h-7 w-7" />,
-                title: "Conduct Due Diligence",
-                description: "Always verify licenses, registrations, and compliance status. Critical in gold sector where DGSM licenses must be current.",
-                tip: "We offer comprehensive due diligence services",
-                color: "orange"
-              },
-              {
-                icon: <CheckCircle2 className="h-7 w-7" />,
-                title: "Plan for Compliance",
-                description: "Build compliance requirements into your timeline and budget from day one to avoid costly delays.",
-                tip: "Upfront consultation identifies all needs early",
-                color: "blue"
-              },
-              {
-                icon: <Network className="h-7 w-7" />,
-                title: "Leverage Market Access",
-                description: "Take advantage of EAC and AfCFTA membership to access broader regional markets beyond Uganda.",
-                tip: "We help understand market access opportunities",
-                color: "blue"
-              },
-              {
-                icon: <Target className="h-7 w-7" />,
-                title: "Invest in Local Talent",
-                description: "Uganda's young workforce is a major asset. Invest in training programs to build skilled local teams.",
-                tip: "We advise on workforce development requirements",
-                color: "green"
-              },
-            ].map((practice, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white border-2 border-gray-200 hover:border-green-500 rounded-2xl p-8 hover:shadow-xl transition-all group"
-              >
-                <div className={`w-14 h-14 rounded-xl ${
-                  practice.color === 'blue' ? 'bg-blue-600' :
-                  practice.color === 'green' ? 'bg-green-600' :
-                  practice.color === 'orange' ? 'bg-orange-600' :
-                  'bg-blue-600'
-                } flex items-center justify-center text-white mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
-                  {practice.icon}
-                </div>
-                
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{practice.title}</h3>
-                <p className="text-gray-600 leading-relaxed mb-4">{practice.description}</p>
-                
-                <div className="pt-4 border-t border-gray-200">
-                  <div className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0 mt-0.5" />
-                    <p className="text-sm text-green-700 font-medium">{practice.tip}</p>
+                icon: Award,
+                title: "Local Partnership",
+                items: [
+                  "Engage experienced local advisors",
+                  "Partner with licensed professionals",
+                  "Build relationships with authorities",
+                  "Understand cultural business practices"
+                ]
+              }
+            ].map((section, index) => {
+              const Icon = section.icon
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-blue-500 hover:shadow-lg transition-all"
+                >
+                  <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center mb-6">
+                    <Icon className="h-6 w-6 text-blue-600" />
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                  <h3 className="text-xl font-bold text-slate-900 mb-4">{section.title}</h3>
+                  <ul className="space-y-3">
+                    {section.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-700">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )
+            })}
           </div>
 
-          {/* Professional Guidance CTA */}
+          {/* Professional Support CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-16 bg-white border-2 border-blue-200 rounded-2xl p-10"
+            className="bg-slate-900 rounded-2xl overflow-hidden"
           >
-            <div className="flex flex-col md:flex-row items-start gap-6">
-              <div className="w-16 h-16 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
-                <Briefcase className="h-8 w-8 text-white" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Professional Guidance Available</h3>
-                <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                  Navigating Uganda's investment landscape requires expertise in regulatory compliance, 
-                  local market conditions, and business practices. Our team provides comprehensive 
-                  facilitation services to ensure your investment is fully compliant and positioned for success.
+            <div className="grid lg:grid-cols-2 gap-0">
+              <div className="p-12 flex flex-col justify-center">
+                <div className="inline-block px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-full mb-6 w-fit">
+                  Expert Guidance Available
+                </div>
+                <h3 className="text-3xl font-bold text-white mb-4">
+                  Navigate Uganda's Investment Landscape
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed mb-8">
+                  Diamond Capital Africa provides comprehensive execution services ensuring full regulatory 
+                  compliance, risk mitigation, and successful transaction completion across all investment sectors.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="group px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold text-white transition-all hover:shadow-xl flex items-center justify-center gap-2">
-                    Explore Our Services
-                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                  <button className="px-8 py-4 bg-transparent border-2 border-blue-600 hover:bg-blue-50 rounded-lg font-semibold text-blue-600 transition-all">
-                    Schedule Consultation
-                  </button>
+                  <Link
+                    href="/services"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all"
+                  >
+                    Explore our services
+                    <ArrowRight className="h-5 w-5" />
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg font-semibold transition-all"
+                  >
+                    Schedule consultation
+                  </Link>
                 </div>
               </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="relative overflow-hidden bg-secondary text-white py-24">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
-        
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Ready to Invest in Uganda?
-            </h2>
-            
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-              Let Axle Africa Partners help you navigate Uganda's investment landscape with 
-              expert facilitation services ensuring full compliance and de-risked investments.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <button className="group px-10 py-5 bg-white text-green-900 hover:bg-gray-100 rounded-lg font-bold text-lg transition-all hover:shadow-2xl flex items-center justify-center gap-2">
-                Get Started Today
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="px-10 py-5 bg-transparent border-2 border-white/30 hover:border-white hover:bg-white/10 rounded-lg font-bold text-lg transition-all">
-                View Our Services
-              </button>
-            </div>
-            
-            <div className="pt-8 flex items-center justify-center gap-8 text-sm text-gray-400">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-green-400" />
-                <span>Free Consultation</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-green-400" />
-                <span>100% Compliant</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-green-400" />
-                <span>Local Expertise</span>
+              <div className="relative min-h-[400px] lg:min-h-full">
+                <Image
+                  src="/business-team.jpg"
+                  alt="Business consultation"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-l from-slate-900/40 to-transparent"></div>
               </div>
             </div>
           </motion.div>

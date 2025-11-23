@@ -2,295 +2,289 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import Image from "next/image"
-import { FileText, ExternalLink, ArrowRight, Star, Calendar, TrendingUp } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import Breadcrumbs from "@/components/breadcrumbs"
+import { FileText, ExternalLink, ArrowRight, TrendingUp, Users } from "lucide-react"
 
 export default function ResourcesPage() {
-  const blogPosts = [
+  const guides = [
+    {
+      title: "Tax & Non-Tax Incentives for Investors",
+      description: "Complete guide to investment incentives available for foreign and local investors in Uganda",
+      href: "/Tax-Incentive-Guide-2.pdf",
+      category: "Investment Incentives",
+      isDownload: true
+    },
     {
       title: "How to Verify a DGSM Gold Dealer License",
-      description: "A comprehensive guide to verifying Directorate of Geological Survey and Mines licenses for gold dealers in Uganda.",
+      description: "Step-by-step verification process for DGSM licenses",
       href: "/resources/articles/verify-dgsm-gold-license",
-      image: "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=800"
+      category: "Gold Sector"
     },
     {
-      title: "PPDA Tender Application: Complete Checklist",
-      description: "Everything you need to know before submitting a tender application through Uganda's Public Procurement and Disposal of Public Assets portal.",
+      title: "PPDA Tender Application Checklist",
+      description: "Complete documentation requirements for PPDA tenders",
       href: "/resources/articles/ppda-tender-checklist",
-      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800"
+      category: "Government Tenders"
     },
     {
-      title: "Understanding Uganda's Gold Export Requirements",
-      description: "Navigate the complex requirements for exporting gold from Uganda, including documentation, permits, and compliance standards.",
+      title: "Uganda Gold Export Requirements",
+      description: "Compliance requirements for gold export transactions",
       href: "/resources/articles/gold-export-requirements",
-      image: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=800"
+      category: "Gold Sector"
     },
     {
-      title: "Common Reasons Bids Get Disqualified",
-      description: "Learn about the most common mistakes that lead to bid disqualification and how to avoid them.",
+      title: "Common Tender Disqualification Reasons",
+      description: "Avoid these mistakes in your bid submissions",
       href: "/resources/articles/tender-disqualification-reasons",
-      image: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800"
-    },
-  ]
-
-  const usefulLinks = [
-    {
-      name: "PPDA Portal",
-      url: "https://www.ppda.go.ug",
-      description: "Public Procurement and Disposal of Public Assets Authority",
-    },
-    {
-      name: "URSB",
-      url: "https://ursb.go.ug",
-      description: "Uganda Registration Services Bureau",
-    },
-    {
-      name: "Ministry of Energy & Mineral Development",
-      url: "https://www.energyandminerals.go.ug",
-      description: "Official ministry website for energy and mineral resources",
-    },
-    {
-      name: "Uganda Investment Authority",
-      url: "https://www.ugandainvest.go.ug",
-      description: "Promoting and facilitating investment in Uganda",
+      category: "Government Tenders"
     },
   ]
 
   return (
-    <div className="flex flex-col">
-      {/* Page Header */}
-      <section className="relative section-padding-sm bg-slate-900 text-white w-full overflow-hidden">
+    <div className="flex flex-col min-h-screen bg-white">
+      {/* Hero Section with Business Highlights - CWG Style */}
+      <section className="relative bg-slate-900 text-white overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1600"
-            alt="Resources and documents"
+            src="/corporate-building.jpg"
+            alt="Corporate building"
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 to-slate-900/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900/95"></div>
         </div>
-        <div className="container-full relative z-10">
-          <div className="container-content">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.21, 1.11, 0.81, 0.99] }}
-              className="max-w-3xl mx-auto"
-            >
-              <Breadcrumbs items={[{ label: "Resources" }]} className="mb-6 text-gray-300" />
-              <div className="text-center">
-                <h1 className="mb-6">Resources</h1>
-                <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed">
-                  Guides, articles, and helpful links for navigating Uganda's investment landscape
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Blog/Guide Section */}
-      <section className="section-padding bg-white w-full">
-        <div className="container-full">
-          <div className="container-content">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, ease: [0.21, 1.11, 0.81, 0.99] }}
-              className="text-center mb-16 md:mb-20"
-            >
-              <h2 className="mb-6">Guides & Articles</h2>
-              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-light leading-relaxed">
-                Educational resources to help you understand Uganda's regulatory requirements
-              </p>
-            </motion.div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto">
-            {blogPosts.map((post, index) => (
-              <motion.div
-                key={post.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-2xl border border-gray-200 hover:shadow-xl transition-all overflow-hidden group"
-              >
-                <div className="relative h-56 overflow-hidden">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="flex items-center gap-2 text-white">
-                      <FileText className="h-5 w-5" />
-                      <span className="text-sm font-semibold">Guide</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">{post.title}</h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{post.description}</p>
-                  <Button asChild variant="ghost" className="group/btn text-blue-600 hover:text-blue-700">
-                    <Link href={post.href} className="flex items-center gap-2">
-                      Read Full Guide
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                    </Link>
-                  </Button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Latest Updates Section */}
-      <section className="section-padding bg-gradient-to-br from-blue-50 to-indigo-50 w-full">
-        <div className="container-full">
-          <div className="container-content">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, ease: [0.21, 1.11, 0.81, 0.99] }}
-              className="text-center mb-16 md:mb-20"
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-200 rounded-full mb-6">
-                <Star className="h-4 w-4 text-blue-700" />
-                <span className="text-sm font-semibold text-blue-900">Latest News</span>
-              </div>
-              <h2 className="mb-6">Recent Success Stories & Updates</h2>
-              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-light leading-relaxed">
-                Real deals, market insights, and regulatory updates
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-              {[
-                {
-                  title: "Diamond Capital Africa Officially Launched",
-                  date: "November 2025",
-                  category: "Company News",
-                  description: "Launched to bridge international investors with Uganda's verified opportunities in gold, coffee, land, and government contracts.",
-                  icon: "�",
-                  color: "blue"
-                },
-                {
-                  title: "8+ Verified Opportunities Now Available",
-                  date: "November 2025",
-                  category: "Opportunity Update",
-                  description: "Curated portfolio includes DGSM-licensed gold suppliers, UCDA-certified coffee exporters, verified land plots, and active government tenders.",
-                  icon: "✨",
-                  color: "amber"
-                },
-                {
-                  title: "Partnership Network Established",
-                  date: "November 2025",
-                  category: "Milestone",
-                  description: "Built network of licensed partners including DGSM gold dealers, UCDA coffee cooperatives, and PPDA-registered contractors.",
-                  icon: "🤝",
-                  color: "brown"
-                }
-              ].map((update, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all overflow-hidden border border-gray-200"
-                >
-                  <div className={`h-2 ${
-                    update.color === 'amber' ? 'bg-amber-600' :
-                    update.color === 'brown' ? 'bg-amber-800' :
-                    'bg-blue-600'
-                  }`}></div>
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-3xl">{update.icon}</span>
-                      <span className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                        update.color === 'amber' ? 'bg-amber-100 text-amber-700' :
-                        update.color === 'brown' ? 'bg-amber-100 text-amber-900' :
-                        'bg-blue-100 text-blue-700'
-                      }`}>
-                        {update.category}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">{update.title}</h3>
-                    <p className="text-sm text-gray-500 mb-3 flex items-center gap-2">
-                      <Calendar className="h-4 w-4" />
-                      {update.date}
-                    </p>
-                    <p className="text-gray-600 leading-relaxed">{update.description}</p>
-                  </div>
-                </motion.div>
-              ))}
+        
+        <div className="relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+            {/* Left: Corporate Image */}
+            <div className="h-96 lg:h-auto">
+              <img
+                src="/corporate-building.jpg"
+                alt="Business growth"
+                className="w-full h-full object-cover opacity-90"
+              />
             </div>
 
-            {/* Market Insights */}
+            {/* Right: Business Highlights Card - CWG Style */}
+            <div className="flex items-center justify-center p-8 lg:p-16">
+              <div className="w-full max-w-lg">
+                <div className="mb-8">
+                  <div className="text-sm font-semibold text-gray-400 mb-2">DIAMOND CAPITAL AFRICA</div>
+                  <div className="text-5xl font-bold mb-2">2024 Performance</div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-6 mb-8">
+                  <div>
+                    <div className="text-3xl font-bold text-white mb-1">$4M+</div>
+                    <div className="text-sm text-gray-400 font-medium">Total Deal Value</div>
+                    <div className="text-xs text-blue-400 mt-1">Transactions Executed</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-white mb-1">100%</div>
+                    <div className="text-sm text-gray-400 font-medium">Compliance Rate</div>
+                    <div className="text-xs text-blue-400 mt-1">Zero Failures</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-white mb-1">2-6 wks</div>
+                    <div className="text-sm text-gray-400 font-medium">Avg Turnaround</div>
+                    <div className="text-xs text-blue-400 mt-1">Transaction Speed</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-white mb-1">25+</div>
+                    <div className="text-sm text-gray-400 font-medium">Countries</div>
+                    <div className="text-xs text-blue-400 mt-1">Client Base</div>
+                  </div>
+                </div>
+
+                <div className="pt-6 border-t border-white/10">
+                  <div className="text-sm text-gray-400 mb-3">Performance Period • Jan - Nov 2025</div>
+                  <Link href="/contact">
+                    <button className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold transition-colors">
+                      Get Started
+                      <ArrowRight className="h-4 w-4" />
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Three Cards Section - CWG Style */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Card 1: Market Insights */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl shadow-xl p-8 border-2 border-blue-200 max-w-4xl mx-auto"
+              transition={{ duration: 0.5 }}
+              className="group relative bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 overflow-hidden cursor-pointer hover:shadow-2xl transition-all"
             >
-              <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center mb-6">
                   <TrendingUp className="h-6 w-6 text-white" />
                 </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Uganda Investment Climate Overview</h3>
-                  <p className="text-sm text-gray-500">Updated: November 2025</p>
+                <h3 className="text-2xl font-bold text-white mb-4">Market Insights</h3>
+                <p className="text-gray-300 mb-6 leading-relaxed">
+                  Access comprehensive analysis of Uganda's investment landscape and sector trends.
+                </p>
+                <div className="inline-flex items-center gap-2 text-blue-400 font-semibold group-hover:gap-3 transition-all">
+                  <span>Explore Insights</span>
+                  <ArrowRight className="h-4 w-4" />
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <ArrowRight className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <p className="text-gray-700"><strong>Gold Sector:</strong> Uganda ranks among Africa's top gold producers - Export-ready suppliers available</p>
+            </motion.div>
+
+            {/* Card 2: Compliance Guides */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="group relative bg-white border-2 border-gray-200 rounded-2xl p-8 overflow-hidden cursor-pointer hover:border-blue-500 hover:shadow-2xl transition-all"
+            >
+              <Link href="#guides">
+                <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center mb-6">
+                  <FileText className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">Compliance Guides</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  Step-by-step guides for DGSM licensing, PPDA tenders, and regulatory requirements.
+                </p>
+                <div className="inline-flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all">
+                  <span>Read Guides</span>
+                  <ArrowRight className="h-4 w-4" />
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* Card 3: Partner Network */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="group relative bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-8 overflow-hidden cursor-pointer hover:shadow-2xl transition-all"
+            >
+              <Link href="/contact">
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="relative z-10">
+                  <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-6">
+                    <Users className="h-6 w-6 text-white" />
                   </div>
-                  <div className="flex items-start gap-3">
-                    <ArrowRight className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <p className="text-gray-700"><strong>Coffee Exports:</strong> Africa's 2nd largest exporter - Both Arabica & Robusta varieties available</p>
+                  <h3 className="text-2xl font-bold text-white mb-4">Partner with Us</h3>
+                  <p className="text-blue-100 mb-6 leading-relaxed">
+                    Connect with our network of legal experts, surveyors, and government contacts.
+                  </p>
+                  <div className="inline-flex items-center gap-2 text-white font-semibold group-hover:gap-3 transition-all">
+                    <span>Get in Touch</span>
+                    <ArrowRight className="h-4 w-4" />
                   </div>
                 </div>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <ArrowRight className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <p className="text-gray-700"><strong>Government Tenders:</strong> Active PPDA opportunities in health, infrastructure, and ICT sectors</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <ArrowRight className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <p className="text-gray-700"><strong>Investment Code 1991:</strong> Revised framework provides clear guidelines for foreign investors</p>
-                  </div>
-                </div>
-              </div>
+              </Link>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Useful Links */}
-      <section className="section-padding bg-gray-50 w-full">
-        <div className="container-full">
-          <div className="container-content">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, ease: [0.21, 1.11, 0.81, 0.99] }}
-              className="text-center mb-16 md:mb-20"
-            >
-              <h2 className="mb-6">Useful Links</h2>
-              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-light leading-relaxed">
-                Official government resources and regulatory portals
-              </p>
-            </motion.div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
-            {usefulLinks.map((link, index) => (
+      {/* Guides Section */}
+      <section id="guides" className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Compliance & Investment Guides
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Comprehensive resources for navigating Uganda's regulatory landscape
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {guides.map((guide, index) => (
+              <motion.div
+                key={guide.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all group"
+              >
+                {guide.isDownload ? (
+                  <a href={guide.href} target="_blank" rel="noopener noreferrer">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-lg bg-slate-900 flex items-center justify-center flex-shrink-0">
+                        <FileText className="h-6 w-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-xs font-semibold text-blue-600 mb-2">{guide.category}</div>
+                        <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                          {guide.title}
+                        </h3>
+                        <p className="text-sm text-gray-600 mb-3">{guide.description}</p>
+                        <div className="inline-flex items-center gap-2 text-blue-600 text-sm font-semibold group-hover:gap-3 transition-all">
+                          <span>Download PDF</span>
+                          <ExternalLink className="h-3 w-3" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                ) : (
+                  <Link href={guide.href}>
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-lg bg-slate-900 flex items-center justify-center flex-shrink-0">
+                        <FileText className="h-6 w-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-xs font-semibold text-blue-600 mb-2">{guide.category}</div>
+                        <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                          {guide.title}
+                        </h3>
+                        <p className="text-sm text-gray-600 mb-3">{guide.description}</p>
+                        <div className="inline-flex items-center gap-2 text-blue-600 text-sm font-semibold group-hover:gap-3 transition-all">
+                          <span>Read Guide</span>
+                          <ArrowRight className="h-3 w-3" />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Government Resources Links */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Essential Government Resources
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Direct links to Uganda's key regulatory and investment authorities
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { name: "PPDA Portal", url: "https://www.ppda.go.ug", desc: "Tender opportunities" },
+              { name: "URSB", url: "https://ursb.go.ug", desc: "Business registration" },
+              { name: "DGSM", url: "https://www.energyandminerals.go.ug", desc: "Mining licenses" },
+              { name: "UIA", url: "https://www.ugandainvest.go.ug", desc: "Investment authority" }
+            ].map((link, index) => (
               <motion.a
                 key={link.name}
                 href={link.url}
@@ -299,52 +293,45 @@ export default function ResourcesPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow flex items-start justify-between group"
+                transition={{ delay: index * 0.1 }}
+                className="group bg-slate-50 border-2 border-slate-200 rounded-xl p-6 hover:border-blue-500 hover:shadow-lg transition-all text-center"
               >
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <ExternalLink className="h-5 w-5 text-primary" />
-                    <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">
-                      {link.name}
-                    </h3>
-                  </div>
-                  <p className="text-sm text-gray-600">{link.description}</p>
+                <div className="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center mx-auto mb-4">
+                  <ExternalLink className="h-5 w-5 text-white" />
                 </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                  {link.name}
+                </h3>
+                <p className="text-sm text-gray-600">{link.desc}</p>
               </motion.a>
             ))}
-          </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding-sm bg-secondary text-white w-full">
-        <div className="container-full text-center">
-          <div className="w-full max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, ease: [0.21, 1.11, 0.81, 0.99] }}
-            >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Need Personalized Guidance?
+      <section className="py-20 bg-slate-900 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Need Help Navigating Uganda's Investment Landscape?
             </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Our team is here to help you navigate Uganda's investment landscape with confidence
+            <p className="text-xl text-gray-300 mb-8">
+              Talk to our team about executing your transaction with complete compliance
             </p>
-            <Button asChild size="lg" className="group">
-              <Link href="/contact">
-                Contact Us Today
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
+            <Link href="/contact">
+              <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl inline-flex items-center gap-2">
+                Schedule Consultation
+                <ArrowRight className="h-5 w-5" />
+              </button>
+            </Link>
           </motion.div>
-          </div>
         </div>
       </section>
     </div>
   )
 }
-

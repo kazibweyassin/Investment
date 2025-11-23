@@ -121,7 +121,7 @@ export default function CoffeeExportsOpportunityPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-amber-900 text-white">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1920"
+            src="/mineral-resources.jpg"
             alt="Coffee farming and exports"
             className="h-full w-full object-cover opacity-40"
           />

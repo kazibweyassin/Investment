@@ -121,7 +121,7 @@ export default function LandAcquisitionsOpportunityPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900 text-white">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920"
+            src="/agriculture-field.jpg"
             alt="Land and real estate"
             className="h-full w-full object-cover opacity-40"
           />

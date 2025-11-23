@@ -121,7 +121,7 @@ export default function GovernmentContractsOpportunityPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920"
+            src="/corporate-building.jpg"
             alt="Government contracts and procurement"
             className="h-full w-full object-cover opacity-40"
           />

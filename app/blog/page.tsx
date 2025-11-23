@@ -11,7 +11,7 @@ const blogPosts = [
     slug: "uganda-investment-outlook-2025",
     title: "Uganda Investment Outlook 2025: Key Sectors and Opportunities",
     excerpt: "An in-depth analysis of Uganda's investment landscape, highlighting emerging opportunities in gold, agriculture, and infrastructure sectors.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+    image: "/business-analytics.jpg",
     date: "2025-01-15",
     readTime: "12 min",
     category: "Market Insights"
@@ -20,7 +20,7 @@ const blogPosts = [
     slug: "ppda-regulatory-updates",
     title: "PPDA Regulatory Updates: What Investors Need to Know",
     excerpt: "Recent changes to Uganda's Public Procurement and Disposal of Public Assets regulations and how they affect foreign investors.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800",
+    image: "/corporate-building.jpg",
     date: "2025-01-10",
     readTime: "8 min",
     category: "Regulatory"
@@ -29,7 +29,7 @@ const blogPosts = [
     slug: "gold-export-trends",
     title: "Uganda Gold Export Trends: Market Analysis and Forecast",
     excerpt: "Understanding the current state of Uganda's gold export market, pricing trends, and future projections for international buyers.",
-    image: "https://images.unsplash.com/photo-1610375461246-83df859d849d?w=800",
+    image: "/coffee-plantation.jpg",
     date: "2025-01-05",
     readTime: "10 min",
     category: "Market Insights"
@@ -43,7 +43,7 @@ export default function BlogPage() {
       <section className="relative overflow-hidden bg-slate-900 text-white py-20">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1920"
+            src="/blog-hero.jpg"
             alt="Blog and insights"
             fill
             className="object-cover opacity-40"

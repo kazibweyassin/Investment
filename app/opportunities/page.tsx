@@ -257,7 +257,7 @@ export default function OpportunitiesPage() {
       <section className="relative overflow-hidden bg-slate-900 text-white py-20">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600"
+            src="/business-analytics.jpg"
             alt="Investment opportunities"
             className="w-full h-full object-cover opacity-40"
           />
@@ -311,7 +311,7 @@ export default function OpportunitiesPage() {
               <div className="text-sm text-gray-600">Active Opportunities</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-slate-900 mb-1">$50M+</div>
+              <div className="text-3xl font-bold text-slate-900 mb-1">$4M+</div>
               <div className="text-sm text-gray-600">Total Deal Value</div>
             </div>
             <div>

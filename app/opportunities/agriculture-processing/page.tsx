@@ -120,7 +120,7 @@ export default function AgricultureProcessingOpportunityPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-green-900 text-white">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1920"
+            src="/agriculture-processing.jpg"
             alt="Agriculture and farming"
             className="h-full w-full object-cover opacity-40"
           />

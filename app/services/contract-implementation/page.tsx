@@ -108,7 +108,7 @@ export default function ContractImplementationPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1500&q=80"
+            src="/office-meeting.jpg"
             alt="Team collaborating"
             className="h-full w-full object-cover opacity-30"
           />

@@ -16,7 +16,7 @@ const SERVICE_LINKS = [
     color: "amber",
     href: "/services/gold-minerals",
     tag: "Precious Metals & Mining",
-    image: "https://images.unsplash.com/photo-1737815914093-becb6c9ac064?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=800",
+    image: "/gold-mining.jpg",
   },
   {
     icon: <FileText className="h-8 w-8" />,
@@ -25,7 +25,7 @@ const SERVICE_LINKS = [
     color: "indigo",
     href: "/services/government-contracts",
     tag: "Government Procurement",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=800",
+    image: "/documents-contract.jpg",
   },
   {
     icon: <Building2 className="h-8 w-8" />,
@@ -34,7 +34,7 @@ const SERVICE_LINKS = [
     color: "emerald",
     href: "/services/real-estate",
     tag: "Land & Property",
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=800",
+    image: "/real-estate.jpg",
   },
   {
     icon: <ClipboardCheck className="h-8 w-8" />,
@@ -43,7 +43,7 @@ const SERVICE_LINKS = [
     color: "blue",
     href: "/services/contract-implementation",
     tag: "Operations & Delivery",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=800",
+    image: "/documents-contract.jpg",
   },
 ]
 
@@ -76,7 +76,7 @@ export default function ServicesPage() {
       <section className="relative overflow-hidden bg-slate-900 text-white py-20">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1725811641344-9bca74828fc0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
+            src="/infrastructure.jpg"
             alt="Business services"
             fill
             priority
@@ -214,7 +214,7 @@ export default function ServicesPage() {
             {/* Hero Image */}
             <div className="relative h-96 rounded-2xl overflow-hidden mb-12 shadow-2xl group">
               <Image
-                src="https://images.unsplash.com/photo-1737815914093-becb6c9ac064?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1315"
+                src="/gold-mining.jpg"
                 alt="Gold sector compliance and mining operations"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -536,7 +536,7 @@ export default function ServicesPage() {
                   <p className="text-sm">We maintain professional indemnity insurance covering errors and omissions in our advisory services.</p>
                 </div>
 
-                <p className="text-xs text-gray-600 mt-4 italic">Client acknowledges these disclosures and agrees that Axle Africa Advisory's liability is limited to gross negligence or willful misconduct.</p>
+                <p className="text-xs text-gray-600 mt-4 italic">Client acknowledges these disclosures and agrees that Diamond Capital Africa's liability is limited to gross negligence or willful misconduct.</p>
               </div>
             </div>
           </div>
@@ -605,7 +605,7 @@ export default function ServicesPage() {
             {/* Hero Image */}
             <div className="relative h-96 rounded-2xl overflow-hidden mb-12 shadow-2xl group">
               <Image
-                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1315"
+                src="/documents-contract.jpg"
                 alt="Government tenders"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"

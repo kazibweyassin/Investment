@@ -120,7 +120,7 @@ export default function InfrastructureTechnologyOpportunityPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900 text-white">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920"
+            src="/infrastructure-tech.jpg"
             alt="Infrastructure and technology"
             className="h-full w-full object-cover opacity-40"
           />
