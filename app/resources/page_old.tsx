@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { FileText, ExternalLink, ArrowRight, TrendingUp, DollarSign, Users, CheckCircle2, Award, Globe2, Target } from "lucide-react"
+import { FileText, ExternalLink, ArrowRight, TrendingUp, DollarSign, Users, CheckCircle2, Award, Globe2, Target, Star, Calendar } from "lucide-react"
+import Breadcrumbs from "@/components/breadcrumbs"
+import { Button } from "@/components/ui/button"
 
 export default function ResourcesPage() {
   const guides = [
@@ -10,25 +12,52 @@ export default function ResourcesPage() {
       title: "How to Verify a DGSM Gold Dealer License",
       description: "Step-by-step verification process for DGSM licenses",
       href: "/resources/articles/verify-dgsm-gold-license",
-      category: "Gold Sector"
+      category: "Gold Sector",
+      image: "/gold-mining.jpg"
     },
     {
       title: "PPDA Tender Application Checklist",
       description: "Complete documentation requirements for PPDA tenders",
       href: "/resources/articles/ppda-tender-checklist",
-      category: "Government Tenders"
+      category: "Government Tenders",
+      image: "/documents-contract.jpg"
     },
     {
       title: "Uganda Gold Export Requirements",
       description: "Compliance requirements for gold export transactions",
       href: "/resources/articles/gold-export-requirements",
-      category: "Gold Sector"
+      category: "Gold Sector",
+      image: "/mineral-resources.jpg"
     },
     {
       title: "Common Tender Disqualification Reasons",
       description: "Avoid these mistakes in your bid submissions",
       href: "/resources/articles/tender-disqualification-reasons",
-      category: "Government Tenders"
+      category: "Government Tenders",
+      image: "/corporate-building.jpg"
+    },
+  ]
+
+  const usefulLinks = [
+    {
+      name: "PPDA - Public Procurement Portal",
+      url: "https://www.ppda.go.ug",
+      description: "Official portal for government procurement opportunities in Uganda"
+    },
+    {
+      name: "DGSM - Directorate of Geological Survey",
+      url: "https://dgsm.go.ug",
+      description: "Geological survey and mineral licensing information"
+    },
+    {
+      name: "Uganda Investment Authority",
+      url: "https://www.ugandainvest.go.ug",
+      description: "Investment incentives and business registration resources"
+    },
+    {
+      name: "Bank of Uganda",
+      url: "https://www.bou.or.ug",
+      description: "Financial regulations and economic data"
     },
   ]
 
@@ -81,7 +110,7 @@ export default function ResourcesPage() {
               </p>
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto">
-            {blogPosts.map((post, index) => (
+            {guides.map((post, index) => (
               <motion.div
                 key={post.title}
                 initial={{ opacity: 0, y: 20 }}

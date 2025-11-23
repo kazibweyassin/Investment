@@ -255,8 +255,15 @@ export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [direction, setDirection] = useState(0)
+  
+  // Services carousel state
+  const [currentServiceIndex, setCurrentServiceIndex] = useState(0)
+  const [isServicesPaused, setIsServicesPaused] = useState(false)
+  
+  // Case studies state
+  const [activeCaseStudy, setActiveCaseStudy] = useState(0)
 
-  // Auto-rotation logic
+  // Auto-rotation logic for hero
   useEffect(() => {
     if (isPaused) return
     
@@ -267,6 +274,17 @@ export default function HomePage() {
     
     return () => clearInterval(timer)
   }, [isPaused])
+  
+  // Auto-rotation logic for services carousel
+  useEffect(() => {
+    if (isServicesPaused) return
+    
+    const timer = setInterval(() => {
+      setCurrentServiceIndex((prev) => (prev + 1) % 4) // 4 services
+    }, 7000)
+    
+    return () => clearInterval(timer)
+  }, [isServicesPaused])
 
   const goToSlide = (index: number) => {
     setDirection(index > currentSlide ? 1 : -1)
@@ -524,20 +542,8 @@ export default function HomePage() {
               }
             ]
 
-            const [currentServiceIndex, setCurrentServiceIndex] = useState(0)
-            const [isPaused, setIsPaused] = useState(false)
             const currentService = services[currentServiceIndex]
             const Icon = currentService.icon
-
-            useEffect(() => {
-              if (isPaused) return
-              
-              const timer = setInterval(() => {
-                setCurrentServiceIndex((prev) => (prev + 1) % services.length)
-              }, 7000)
-
-              return () => clearInterval(timer)
-            }, [isPaused, services.length])
 
             return (
               <>
@@ -683,7 +689,6 @@ export default function HomePage() {
           </motion.div>
 
           {(() => {
-            const [activeCaseStudy, setActiveCaseStudy] = useState(0)
             const activeStudy = CASE_STUDIES[activeCaseStudy]
 
             return (
