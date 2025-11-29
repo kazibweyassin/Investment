@@ -369,7 +369,7 @@ export default function HomePage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-6"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3 sm:mb-4"
                 >
                   {currentSlideData.title}
                 </motion.h1>
@@ -379,7 +379,7 @@ export default function HomePage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                  className="text-base sm:text-lg md:text-xl text-gray-300 mb-4 sm:mb-6 leading-relaxed max-w-2xl"
+                  className="text-sm sm:text-base md:text-lg text-gray-300 mb-3 sm:mb-4 leading-relaxed max-w-2xl"
                 >
                   {currentSlideData.subtitle}
                 </motion.p>
@@ -389,7 +389,7 @@ export default function HomePage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
-                  className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 text-sm sm:text-base md:text-lg text-gray-400"
+                  className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-4 sm:mb-6 text-xs sm:text-sm md:text-base text-gray-400"
                 >
                   {currentSlideData.highlights.map((highlight, index) => (
                     <span key={index} className="flex items-center gap-2">
@@ -492,58 +492,61 @@ export default function HomePage() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-5xl mx-auto"
-          >
-            {/* Badge */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left Side - Heading and Description */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-600/20 border border-blue-400/30 rounded-full mb-4 sm:mb-6"
+              transition={{ duration: 0.6 }}
+              className="text-left"
             >
-              <Globe2 className="h-3 w-3 sm:h-4 sm:w-4 text-blue-400" />
-              <span className="text-xs sm:text-sm font-medium text-blue-300">Empowering Growth Through Expert Insights</span>
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-600/20 border border-blue-400/30 rounded-full mb-4 sm:mb-6"
+              >
+                <Globe2 className="h-3 w-3 sm:h-4 sm:w-4 text-blue-400" />
+                <span className="text-xs sm:text-sm font-medium text-blue-300">Empowering Growth Through Expert Insights</span>
+              </motion.div>
+
+              {/* Main Heading */}
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 leading-tight"
+              >
+                We Are Positioning Africa to<br /> Maximize the Future
+              </motion.h2>
+
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                className="text-xs sm:text-sm md:text-base text-gray-200 leading-relaxed"
+              >
+                <span className="font-semibold text-white">Diamond Capital Africa</span> is a leading African investment advisory and solutions company, 
+                specializing in a broad range of investment services including gold exports, government contracts, coffee trade, real estate acquisitions, 
+                and infrastructure development. With a strong footprint across Africa, we leverage our robust partnership network to connect businesses, 
+                enterprises, governments, and investors. Through our value-added services, we help clients streamline operations, enhance efficiency, 
+                and drive meaningful improvements across various sectors.
+              </motion.p>
             </motion.div>
 
-            {/* Main Heading */}
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight"
-            >
-              We Are Positioning Africa to<br className="hidden sm:block" /> Maximize the Future
-            </motion.h2>
-
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="text-sm sm:text-base md:text-lg text-gray-200 leading-relaxed mb-6 sm:mb-8 max-w-4xl mx-auto"
-            >
-              <span className="font-semibold text-white">Diamond Capital Africa</span> is a leading African investment advisory and solutions company, 
-              specializing in a broad range of investment services including gold exports, government contracts, coffee trade, real estate acquisitions, 
-              and infrastructure development. With a strong footprint across Africa, we leverage our robust partnership network to connect businesses, 
-              enterprises, governments, and investors. Through our value-added services, we help clients streamline operations, enhance efficiency, 
-              and drive meaningful improvements across various sectors.
-            </motion.p>
-
-            {/* Key Highlights */}
+            {/* Right Side - Key Highlights */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-10"
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="space-y-4 sm:space-y-6"
             >
               {[
                 {
@@ -572,32 +575,36 @@ export default function HomePage() {
                     transition={{ delay: 0.6 + index * 0.1 }}
                     className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 hover:bg-white/10 transition-all"
                   >
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mb-3 sm:mb-4 mx-auto">
-                      <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400" />
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">{highlight.title}</h3>
+                        <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">{highlight.description}</p>
+                      </div>
                     </div>
-                    <h3 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">{highlight.title}</h3>
-                    <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">{highlight.description}</p>
                   </motion.div>
                 )
               })}
             </motion.div>
+          </div>
 
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.9 }}
-              className="mt-8 sm:mt-10"
+          {/* CTA - Centered Below */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.9 }}
+            className="mt-8 sm:mt-10 text-center"
+          >
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-lg font-semibold transition-all text-sm sm:text-base min-h-[44px] touch-manipulation"
             >
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-lg font-semibold transition-all text-sm sm:text-base min-h-[44px] touch-manipulation"
-              >
-                Learn More About Our Impact
-                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
-              </Link>
-            </motion.div>
+              Learn More About Our Impact
+              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -611,10 +618,10 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-2 sm:mb-3">
               Our Services
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Comprehensive investment solutions and advisory services across Africa
             </p>
           </motion.div>
@@ -733,11 +740,11 @@ export default function HomePage() {
                             {currentService.tagline}
                           </div>
                           
-                          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3 sm:mb-4 leading-tight">
+                          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-2 sm:mb-3 leading-tight">
                             {currentService.title}
                           </h3>
                           
-                          <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
+                          <p className="text-xs sm:text-sm md:text-base text-gray-600 mb-3 sm:mb-4 leading-relaxed">
                             {currentService.description}
                           </p>
 
@@ -747,7 +754,7 @@ export default function HomePage() {
                                 <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
                                   <ArrowRight className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-blue-600" />
                                 </div>
-                                <span className="text-sm sm:text-base text-gray-700 leading-relaxed">{feature}</span>
+                                <span className="text-xs sm:text-sm text-gray-700 leading-relaxed">{feature}</span>
                               </li>
                             ))}
                           </ul>
@@ -817,10 +824,10 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-8 sm:mb-12 md:mb-16"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-2 sm:mb-3">
               Client Success Stories
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Real results from real transactions across Uganda's key investment sectors
             </p>
           </motion.div>
@@ -859,7 +866,7 @@ export default function HomePage() {
                         </div>
 
                         <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8">
-                          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 leading-tight">
+                          <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
                             {activeStudy.title}
                           </h3>
                         </div>
@@ -871,7 +878,7 @@ export default function HomePage() {
                             <div className="w-1 h-4 sm:h-5 bg-blue-600 rounded-full"></div>
                             <h4 className="font-bold text-white text-xs sm:text-sm uppercase tracking-wide">The Challenge</h4>
                           </div>
-                          <p className="text-sm sm:text-base text-gray-300 leading-relaxed">{activeStudy.challenge}</p>
+                          <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">{activeStudy.challenge}</p>
                         </div>
 
                         <div>
@@ -879,7 +886,7 @@ export default function HomePage() {
                             <div className="w-1 h-4 sm:h-5 bg-blue-600 rounded-full"></div>
                             <h4 className="font-bold text-white text-xs sm:text-sm uppercase tracking-wide">Our Solution</h4>
                           </div>
-                          <p className="text-sm sm:text-base text-gray-300 leading-relaxed">{activeStudy.solution}</p>
+                          <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">{activeStudy.solution}</p>
                         </div>
 
                         <div>
@@ -960,10 +967,10 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-8 sm:mb-12 md:mb-16"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-2 sm:mb-3">
               Knowledge Center
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Expert guides, regulatory insights, and practical resources for Uganda investments
             </p>
           </motion.div>
@@ -998,10 +1005,10 @@ export default function HomePage() {
                       <Gem className="h-4 w-4 sm:h-5 sm:w-5 text-blue-400" />
                       <span className="text-xs sm:text-sm font-semibold text-blue-400">Gold Sector</span>
                     </div>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3 group-hover:text-blue-400 transition-colors leading-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-blue-400 transition-colors leading-tight">
                       How to Verify DGSM Gold Licenses
                     </h3>
-                    <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed mb-3 sm:mb-4">
+                    <p className="text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed mb-2 sm:mb-3">
                       Complete step-by-step guide to verifying gold dealer licenses, mining permits, and export documentation in Uganda
                     </p>
                     <div className="flex items-center gap-2 text-white font-semibold text-sm sm:text-base">
@@ -1096,10 +1103,10 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-8 sm:mb-12 md:mb-16"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-2 sm:mb-3">
               How We Execute
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               A proven three-phase execution model-from analysis to completed delivery
             </p>
           </motion.div>
@@ -1139,10 +1146,10 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-2 sm:mb-3">
               Trusted by International Investors
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Hear from clients who successfully navigated Uganda's business landscape with our support
             </p>
           </motion.div>
@@ -1157,7 +1164,7 @@ export default function HomePage() {
                 transition={{ delay: index * 0.1 }}
                 className="p-5 sm:p-6 bg-white border-2 border-gray-200 rounded-xl hover:shadow-xl hover:border-blue-400 transition-all"
               >
-                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">{testimonial.flag}</div>
+                <div className="text-2xl sm:text-3xl mb-3 sm:mb-4">{testimonial.flag}</div>
                 <p className="text-gray-700 mb-4 sm:mb-6 leading-relaxed italic text-xs sm:text-sm">"{testimonial.quote}"</p>
                 <div className="pt-3 sm:pt-4 border-t border-gray-200">
                   <p className="font-bold text-slate-900 text-xs sm:text-sm">{testimonial.author}</p>
@@ -1200,10 +1207,10 @@ export default function HomePage() {
                   <div className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-600 text-white text-xs sm:text-sm font-semibold rounded-full mb-4 sm:mb-6">
                     Our Advantage
                   </div>
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4 leading-tight">
                     Why Work With<br />Diamond Capital Africa
                   </h2>
-                  <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-lg">
+                  <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed max-w-lg">
                     We execute complete transactions with institutional discipline-not just introductions or advice
                   </p>
                 </motion.div>
@@ -1251,10 +1258,10 @@ export default function HomePage() {
                         </div>
                       </div>
                       <div className="min-w-0">
-                        <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1 sm:mb-2">
+                        <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1 sm:mb-2">
                           {item.title}
                         </h3>
-                        <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                        <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                           {item.description}
                         </p>
                       </div>
@@ -1327,7 +1334,7 @@ export default function HomePage() {
                   className="text-center"
                 >
                   <Icon className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600 mx-auto mb-2 sm:mb-3" />
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-1 sm:mb-2">
+                  <div className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-1 sm:mb-2">
                     {stat.number}
                   </div>
                   <div className="text-xs sm:text-sm text-gray-600 font-medium leading-tight">{stat.label}</div>
@@ -1370,27 +1377,27 @@ export default function HomePage() {
                 >
                   <div className="mb-8">
                     <div className="text-sm font-semibold text-gray-400 mb-2">DIAMOND CAPITAL AFRICA</div>
-                    <div className="text-5xl font-bold mb-2">2024 Performance</div>
+                    <div className="text-3xl sm:text-4xl font-bold mb-2">2024 Performance</div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-6 mb-8">
                     <div>
-                      <div className="text-3xl font-bold text-white mb-1">$4M+</div>
-                      <div className="text-sm text-gray-400 font-medium">Total Deal Value</div>
+                      <div className="text-2xl sm:text-3xl font-bold text-white mb-1">$4M+</div>
+                      <div className="text-xs sm:text-sm text-gray-400 font-medium">Total Deal Value</div>
                       <div className="text-xs text-blue-400 mt-1">Transactions Executed</div>
                     </div>
                     <div>
-                      <div className="text-3xl font-bold text-white mb-1">100%</div>
-                      <div className="text-sm text-gray-400 font-medium">Compliance Rate</div>
+                      <div className="text-2xl sm:text-3xl font-bold text-white mb-1">100%</div>
+                      <div className="text-xs sm:text-sm text-gray-400 font-medium">Compliance Rate</div>
                       <div className="text-xs text-blue-400 mt-1">Zero Failures</div>
                     </div>
                     <div>
-                      <div className="text-3xl font-bold text-white mb-1">2-6 wks</div>
-                      <div className="text-sm text-gray-400 font-medium">Avg Turnaround</div>
+                      <div className="text-2xl sm:text-3xl font-bold text-white mb-1">2-6 wks</div>
+                      <div className="text-xs sm:text-sm text-gray-400 font-medium">Avg Turnaround</div>
                       <div className="text-xs text-blue-400 mt-1">Transaction Speed</div>
                     </div>
                     <div>
-                      <div className="text-3xl font-bold text-white mb-1">25+</div>
+                      <div className="text-2xl sm:text-3xl font-bold text-white mb-1">25+</div>
                       <div className="text-sm text-gray-400 font-medium">Countries</div>
                       <div className="text-xs text-blue-400 mt-1">Client Base</div>
                     </div>
@@ -1399,17 +1406,17 @@ export default function HomePage() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                     <Link href="/intelligence" className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all text-center">
                       <TrendingUp className="h-6 w-6 text-blue-400 mx-auto mb-2" />
-                      <div className="text-sm font-semibold text-white mb-1">Market Intelligence</div>
+                      <div className="text-xs sm:text-sm font-semibold text-white mb-1">Market Intelligence</div>
                       <div className="text-xs text-gray-400">Weekly reports</div>
                     </Link>
                     <Link href="/intelligence" className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all text-center">
                       <FileText className="h-6 w-6 text-blue-400 mx-auto mb-2" />
-                      <div className="text-sm font-semibold text-white mb-1">Due Diligence</div>
+                      <div className="text-xs sm:text-sm font-semibold text-white mb-1">Due Diligence</div>
                       <div className="text-xs text-gray-400">Verification service</div>
                     </Link>
                     <Link href="/contact" className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all text-center">
                       <Users className="h-6 w-6 text-blue-400 mx-auto mb-2" />
-                      <div className="text-sm font-semibold text-white mb-1">Partner Network</div>
+                      <div className="text-xs sm:text-sm font-semibold text-white mb-1">Partner Network</div>
                       <div className="text-xs text-gray-400">Join us</div>
                     </Link>
                   </div>
@@ -1442,10 +1449,10 @@ export default function HomePage() {
             <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 rounded-full mb-3 sm:mb-4">
               <HelpCircle className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-2 sm:mb-3">
               Frequently Asked Questions
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600">
               Common questions from international investors
             </p>
           </motion.div>
@@ -1485,8 +1492,8 @@ export default function HomePage() {
                 transition={{ delay: index * 0.05 }}
                 className="bg-slate-50 rounded-xl p-4 sm:p-6 border border-gray-200"
               >
-                <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2 leading-tight">{faq.question}</h3>
-                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{faq.answer}</p>
+                <h3 className="text-sm sm:text-base font-bold text-slate-900 mb-1 sm:mb-2 leading-tight">{faq.question}</h3>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{faq.answer}</p>
               </motion.div>
             ))}
           </div>
@@ -1502,10 +1509,10 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-2 sm:mb-3">
               Our Team
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Experienced professionals with deep knowledge of Uganda's investment landscape
             </p>
           </motion.div>
@@ -1567,10 +1574,10 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-2 sm:mb-3">
               Certifications & Partnerships
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Licensed, registered, and partnered with Uganda's leading institutions
             </p>
           </motion.div>
